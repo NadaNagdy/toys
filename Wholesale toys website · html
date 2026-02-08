@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ألعاب بالجملة - Wholesale Toys</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #FF6B9D;
+            --secondary: #FFA500;
+            --accent: #7B68EE;
+            --dark: #2C3E50;
+            --light: #FFF8F0;
+            --success: #4CAF50;
+            --shadow: rgba(255, 107, 157, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #FFF8F0 0%, #FFE4F0 100%);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background Shapes */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .shape-1 {
+            width: 200px;
+            height: 200px;
+            background: var(--primary);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            background: var(--secondary);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            top: 60%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+        
+        .shape-3 {
+            width: 180px;
+            height: 180px;
+            background: var(--accent);
+            border-radius: 80% 20% 55% 45% / 50% 70% 30% 50%;
+            bottom: 15%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -30px) rotate(90deg); }
+            50% { transform: translate(-20px, 20px) rotate(180deg); }
+            75% { transform: translate(40px, 10px) rotate(270deg); }
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            padding: 1.5rem 0;
+            box-shadow: 0 8px 32px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-family: 'Baloo Bhaijaan 2', cursive;
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: white;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: 'Baloo Bhaijaan 2', cursive;
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: slideDown 0.8s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .btn {
+            padding: 1.2rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Cairo', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 3px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        /* Age Categories */
+        .age-categories {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+        
+        .section-title {
+            font-family: 'Baloo Bhaijaan 2', cursive;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 30px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,107,157,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+        }
+        
+        .category-card:hover::before {
+            left: 100%;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-15px) rotate(-2deg);
+            box-shadow: 0 20px 60px rgba(255,107,157,0.3);
+        }
+        
+        .category-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        /* Products Grid */
+        .products {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(255,107,157,0.3);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .product-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+        
+        .chatbot-button {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px var(--shadow);
+            }
+            50% {
+                box-shadow: 0 15px 40px rgba(255,107,157,0.5);
+                transform: scale(1.1);
+            }
+        }
+        
+        .chatbot-button:hover {
+            transform: scale(1.2) rotate(15deg);
+        }
+        
+        .chatbot-window {
+            display: none;
+            position: absolute;
+            bottom: 90px;
+            left: 0;
+            width: 400px;
+            height: 600px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideInLeft 0.4s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .chatbot-window.active {
+            display: flex;
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 1.5rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .chat-close:hover {
+            transform: rotate(90deg);
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: #F8F9FA;
+        }
+        
+        .message {
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.3s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .message-bot {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .message-user {
+            display: flex;
+            gap: 0.5rem;
+            flex-direction: row-reverse;
+        }
+        
+        .message-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .message-content {
+            background: white;
+            padding: 1rem;
+            border-radius: 15px;
+            max-width: 70%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .message-user .message-content {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+        }
+        
+        .chat-input-container {
+            padding: 1rem;
+            background: white;
+            border-top: 2px solid #F0F0F0;
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 25px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .chat-input:focus {
+            border-color: var(--primary);
+        }
+        
+        .chat-send {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .chat-send:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+        
+        /* Quick Actions */
+        .quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .quick-action {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            color: var(--primary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quick-action:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a252f 100%);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Baloo Bhaijaan 2', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-5px) rotate(15deg);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .chatbot-window {
+                width: calc(100vw - 40px);
+                height: calc(100vh - 120px);
+            }
+            
+            .chatbot-button {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="logo-icon">🎮</span>
+                ألعاب بالجملة
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#categories">الفئات العمرية</a></li>
+                <li><a href="#products">المنتجات</a></li>
+                <li><a href="#wholesale">أسعار الجملة</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>🎨 عالم الألعاب التعليمية 🎨</h1>
+        <p>ألعاب أطفال بالجملة - جودة عالية وأسعار تنافسية</p>
+        <div class="cta-buttons">
+            <a href="#products" class="btn btn-primary">تصفح المنتجات</a>
+            <a href="#wholesale" class="btn btn-secondary">أسعار الجملة</a>
+        </div>
+    </section>
+
+    <section class="age-categories" id="categories">
+        <h2 class="section-title">🎯 تسوق حسب العمر</h2>
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon">👶</div>
+                <h3>٠ - ٣ شهور</h3>
+                <p>ألعاب حسية وتطويرية للمواليد الجدد</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🍼</div>
+                <h3>٣ - ٩ شهور</h3>
+                <p>ألعاب تفاعلية لتنمية المهارات الحركية</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🎨</div>
+                <h3>٩ - ١٢ شهر</h3>
+                <p>ألعاب تعليمية وإبداعية</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🚀</div>
+                <h3>١ - ٣ سنوات</h3>
+                <p>ألعاب ذكاء ومغامرات</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <h2 class="section-title">🌟 منتجاتنا المميزة</h2>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400" alt="سجادة البيانو" class="product-image">
+                <div class="product-info">
+                    <span class="product-badge">الأكثر مبيعاً</span>
+                    <h3 class="product-name">سجادة البيانو الموسيقية</h3>
+                    <p class="product-price">٤٥٠ جنيه</p>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=400" alt="الصبارة الراقصة" class="product-image">
+                <div class="product-info">
+                    <span class="product-badge">جديد</span>
+                    <h3 class="product-name">الصبارة الراقصة</h3>
+                    <p class="product-price">٢٢٠ جنيه</p>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=400" alt="السجادة المائية" class="product-image">
+                <div class="product-info">
+                    <span class="product-badge">خصم ٢٠٪</span>
+                    <h3 class="product-name">السجادة المائية</h3>
+                    <p class="product-price">١٦٠ جنيه</p>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=400" alt="بوكس الشخاليل" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">بوكس الشخاليل السيليكون</h3>
+                    <p class="product-price">٢٩٠ جنيه</p>
+                </div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=400" alt="امسك كابوريا" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">لعبة امسك الكابوريا</h3>
+                    <p class="product-price">١٧٥ جنيه</p>
+                </div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1611308026550-1e9b56b23eeb?w=400" alt="الزرافة السوستة" class="product-image">
+                <div class="product-info">
+                    <span class="product-badge">عرض خاص</span>
+                    <h3 class="product-name">الزرافة السوستة</h3>
+                    <p class="product-price">٥٥ جنيه</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <button class="chatbot-button" id="chatbotToggle">
+            💬
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chat-header">
+                <span>🤖 مساعد الألعاب الذكي</span>
+                <button class="chat-close" id="chatClose">✕</button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message message-bot">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        مرحباً! 👋 أنا مساعدك الذكي في عالم الألعاب.<br>
+                        كيف يمكنني مساعدتك اليوم؟
+                        <div class="quick-actions">
+                            <button class="quick-action" onclick="sendQuickMessage('ما هي أفضل الألعاب للأطفال من ٦ شهور؟')">ألعاب ٦ شهور</button>
+                            <button class="quick-action" onclick="sendQuickMessage('ما هي أسعار الجملة؟')">أسعار الجملة</button>
+                            <button class="quick-action" onclick="sendQuickMessage('كيف أطلب؟')">كيفية الطلب</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="اكتب رسالتك هنا...">
+                <button class="chat-send" id="chatSend">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>🎮 عن المتجر</h3>
+                <p>نوفر أفضل الألعاب التعليمية للأطفال بأسعار الجملة التنافسية. جودة عالية وتوصيل سريع في جميع أنحاء مصر.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">📘</a>
+                    <a href="#" class="social-icon">📸</a>
+                    <a href="#" class="social-icon">💬</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#categories">الفئات العمرية</a></li>
+                    <li><a href="#products">المنتجات</a></li>
+                    <li><a href="#wholesale">أسعار الجملة</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>معلومات التواصل</h3>
+                <ul>
+                    <li>📞 الهاتف: 01055617855</li>
+                    <li>📧 البريد: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ddb4b3bbb29da9b2a4aef0aab5b2b1b8aebcb1b8f3beb2b0">[email&#160;protected]</a></li>
+                    <li>📍 العنوان: القاهرة، مصر</li>
+                    <li>⏰ العمل: يومياً 9ص - 9م</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Chatbot Functionality
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbotWindow = document.getElementById('chatbotWindow');
+        const chatClose = document.getElementById('chatClose');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+        const chatMessages = document.getElementById('chatMessages');
+
+        chatbotToggle.addEventListener('click', () => {
+            chatbotWindow.classList.add('active');
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatbotWindow.classList.remove('active');
+        });
+
+        function addMessage(content, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'message-user' : 'message-bot'}`;
+            
+            messageDiv.innerHTML = `
+                <div class="message-avatar">${isUser ? '👤' : '🤖'}</div>
+                <div class="message-content">${content}</div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function getBotResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            
+            // Simple keyword-based responses
+            if (message.includes('سعر') || message.includes('جملة')) {
+                return `📊 أسعار الجملة لدينا تنافسية جداً!<br><br>
+                        • من ٥٠-١٠٠ قطعة: خصم ١٥٪<br>
+                        • من ١٠٠-٣٠٠ قطعة: خصم ٢٥٪<br>
+                        • أكثر من ٣٠٠ قطعة: خصم ٣٥٪<br><br>
+                        للطلبات الكبيرة تواصل معنا: 01055617855`;
+            }
+            
+            if (message.includes('شهر') || message.includes('عمر')) {
+                return `👶 نوفر ألعاب لجميع الأعمار:<br><br>
+                        • ٠-٣ شهور: ألعاب حسية وموبايلز<br>
+                        • ٣-٩ شهور: شخاليل وألعاب تفاعلية<br>
+                        • ٩-١٢ شهر: ألعاب تعليمية موسيقية<br>
+                        • ١-٣ سنوات: ألعاب ذكاء وإبداع<br><br>
+                        أي فئة عمرية تبحث عنها؟`;
+            }
+            
+            if (message.includes('طلب') || message.includes('اطلب') || message.includes('شراء')) {
+                return `🛒 الطلب سهل جداً!<br><br>
+                        ١. اختر المنتجات من الموقع<br>
+                        ٢. تواصل معنا واتساب: 01055617855<br>
+                        ٣. أخبرنا بالكمية المطلوبة<br>
+                        ٤. سنرسل لك عرض السعر<br>
+                        ٥. التوصيل لباب المنزل!<br><br>
+                        للطلب الآن اضغط <a href="https://wa.me/201055617855" style="color: #FF6B9D; font-weight: bold;">هنا</a>`;
+            }
+            
+            if (message.includes('توصيل') || message.includes('شحن')) {
+                return `🚚 التوصيل والشحن:<br><br>
+                        • القاهرة والجيزة: ١-٢ يوم عمل<br>
+                        • باقي المحافظات: ٢-٤ أيام عمل<br>
+                        • شحن مجاني للطلبات أكثر من ٣٠٠٠ جنيه<br>
+                        • رسوم الشحن: ٥٠-٧٥ جنيه<br><br>
+                        طلب خاص؟ تواصل معنا!`;
+            }
+            
+            // Default response
+            return `شكراً لتواصلك! 😊<br><br>
+                    يمكنني مساعدتك في:<br>
+                    • معرفة الأسعار والعروض<br>
+                    • اختيار الألعاب المناسبة حسب العمر<br>
+                    • معلومات عن التوصيل والشحن<br>
+                    • كيفية الطلب والدفع<br><br>
+                    كيف يمكنني مساعدتك؟`;
+        }
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message === '') return;
+            
+            addMessage(message, true);
+            chatInput.value = '';
+            
+            // Simulate bot thinking
+            setTimeout(() => {
+                const response = getBotResponse(message);
+                addMessage(response);
+            }, 800);
+        }
+
+        function sendQuickMessage(message) {
+            chatInput.value = message;
+            sendMessage();
+        }
+
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (tar
