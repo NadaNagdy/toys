@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ألعاب الأطفال المتحركة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 3em;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .toys-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .toy-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease-in-out;
+        }
+
+        .toy-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .toy-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            animation: pulse 2s infinite;
+        }
+
+        .toy-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .toy-title {
+            font-size: 1.5em;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .toy-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .toys-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="floating">🎨 ألعاب الأطفال المتحركة 🎨</h1>
+
+        <div class="toys-grid">
+            <div class="toy-card">
+                <img src="baby_play_gym.png" alt="لعبة الطفل الرضيع" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">صالة ألعاب الطفل الرضيع</h2>
+                    <p class="toy-description">
+                        صالة ألعاب تفاعلية مع ألعاب معلقة ملونة، مثالية لتطوير المهارات الحركية والحسية للطفل
+                    </p>
+                </div>
+            </div>
+
+            <div class="toy-card">
+                <img src="musical_crab.png" alt="لعبة السلطعون الموسيقي" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">السلطعون الموسيقي التفاعلي</h2>
+                    <p class="toy-description">
+                        لعبة سلطعون موسيقية تفاعلية بألوان زاهية، تساعد على تنمية الحواس والمهارات الموسيقية
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // إضافة تأثيرات تفاعلية إضافية
+        document.querySelectorAll('.toy-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // تأثير التحريك عند التمرير
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.toy-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+
+</html>
