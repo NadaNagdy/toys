@@ -4,16 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ألعاب الأطفال الممتعة</title>
+    <title>Open Store - عالم الألعاب</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #667eea;
-            --secondary: #764ba2;
-            --accent: #ff6b6b;
-            --light: #fdfbfb;
+            /* Open Store Brand Colors */
+            --primary: #FFD700;
+            /* Yellow/Gold */
+            --secondary: #FF6B6B;
+            /* Red/Coral */
+            --accent: #4ECDC4;
+            /* Teal/Green */
+            --highlight: #A78BFA;
+            /* Purple */
             --dark: #2d3748;
-            --text-gray: #718096;
+            --light: #f7fafc;
         }
 
         * {
@@ -24,7 +29,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            background: linear-gradient(135deg, #fdfbfb 0%, #edf2f7 100%);
             min-height: 100vh;
             color: var(--dark);
         }
@@ -39,22 +44,27 @@
         .navbar {
             background: white;
             padding: 15px 30px;
-            border-radius: 15px;
+            border-radius: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             margin-bottom: 30px;
             position: sticky;
             top: 20px;
             z-index: 100;
         }
 
-        .logo {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: var(--secondary);
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             cursor: pointer;
+        }
+
+        .logo-img {
+            height: 60px;
+            object-fit: contain;
         }
 
         .nav-icons {
@@ -66,52 +76,93 @@
         .cart-icon {
             position: relative;
             cursor: pointer;
-            font-size: 1.2em;
+            font-size: 1.4em;
             color: var(--dark);
-        }
-
-        .cart-badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--accent);
-            color: white;
-            font-size: 0.7em;
-            width: 18px;
-            height: 18px;
+            background: var(--light);
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
+            transition: transform 0.3s;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+            background: var(--primary);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--secondary);
+            color: white;
+            font-size: 0.7em;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid white;
+        }
+
+        /* Goal Section */
+        .our-goal {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .our-goal h2 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .our-goal p {
+            color: var(--dark);
+            font-size: 1.1em;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         /* Filter Tabs */
         .filters {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             margin-bottom: 30px;
             overflow-x: auto;
-            padding-bottom: 5px;
+            padding-bottom: 10px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .filter-btn {
             background: white;
-            border: 1px solid #e2e8f0;
-            padding: 10px 20px;
-            border-radius: 20px;
+            border: 2px solid #e2e8f0;
+            padding: 12px 25px;
+            border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s;
-            color: var(--text-gray);
+            color: var(--dark);
+            font-weight: bold;
+            font-size: 1em;
         }
 
         .filter-btn.active,
         .filter-btn:hover {
             background: var(--primary);
-            color: white;
+            color: var(--dark);
             border-color: var(--primary);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
         }
 
         /* Grid */
@@ -125,22 +176,27 @@
             background: white;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             cursor: pointer;
+            border: 1px solid #f0f0f0;
         }
 
         .toy-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
         }
 
         .toy-image {
             width: 100%;
             height: 250px;
-            object-fit: cover;
+            object-fit: contain;
+            /* Changed to contain to show full toy */
+            background: #fafafa;
+            padding: 10px;
         }
 
         .toy-info {
@@ -159,26 +215,27 @@
         }
 
         .toy-price {
-            font-size: 1.2em;
-            color: var(--accent);
+            font-size: 1.3em;
+            color: var(--secondary);
             font-weight: bold;
         }
 
         .add-btn {
-            background: var(--primary);
+            background: var(--accent);
             color: white;
             border: none;
-            padding: 10px;
-            border-radius: 10px;
+            padding: 12px;
+            border-radius: 12px;
             cursor: pointer;
             margin-top: 15px;
             transition: background 0.3s;
             width: 100%;
-            font-size: 1em;
+            font-size: 1.1em;
+            font-weight: bold;
         }
 
         .add-btn:hover {
-            background: var(--secondary);
+            background: #3ebcb4;
         }
 
         /* Modal / Product View */
@@ -188,7 +245,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
             display: none;
             justify-content: center;
             align-items: center;
@@ -203,30 +261,45 @@
         .modal-content {
             background: white;
             padding: 30px;
-            border-radius: 20px;
-            max-width: 800px;
+            border-radius: 25px;
+            max-width: 900px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
         }
 
         .close-modal {
             position: absolute;
             top: 20px;
             left: 20px;
-            font-size: 1.5em;
+            font-size: 2em;
             cursor: pointer;
-            color: var(--text-gray);
+            color: var(--dark);
+            width: 40px;
+            height: 40px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .close-modal:hover {
+            background: var(--secondary);
+            color: white;
         }
 
         .product-detail-img {
             width: 100%;
-            border-radius: 15px;
-            object-fit: cover;
+            border-radius: 20px;
+            object-fit: contain;
+            background: #fafafa;
         }
 
         /* Cart & Checkout */
@@ -245,39 +318,39 @@
             padding: 20px;
             border-bottom: 1px solid #eee;
             background: white;
-            margin-bottom: 10px;
-            border-radius: 10px;
+            margin-bottom: 15px;
+            border-radius: 15px;
             align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
         }
 
         .cart-item img {
             width: 80px;
             height: 80px;
             border-radius: 10px;
-            object-fit: cover;
-        }
-
-        .cart-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            object-fit: contain;
+            background: #f8f8f8;
+            padding: 5px;
         }
 
         .qty-btn {
-            background: #eee;
+            background: #edf2f7;
             border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 5px;
+            width: 35px;
+            height: 35px;
+            border-radius: 10px;
             cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2em;
         }
 
         .checkout-form {
             background: white;
-            padding: 30px;
-            border-radius: 20px;
-            max-width: 600px;
+            padding: 40px;
+            border-radius: 25px;
+            max-width: 700px;
             margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
         .form-group {
@@ -287,123 +360,176 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            color: var(--text-gray);
+            color: var(--dark);
+            font-weight: bold;
         }
 
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
             font-family: inherit;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
         }
 
         .summary-card {
             background: #f8fafc;
-            padding: 20px;
-            border-radius: 15px;
-            margin-top: 20px;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 30px;
+            border: 1px solid #edf2f7;
         }
 
         .summary-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 1.1em;
         }
 
         .summary-total {
-            border-top: 1px solid #ddd;
-            padding-top: 10px;
+            border-top: 2px dashed #cbd5e0;
+            padding-top: 15px;
             font-weight: bold;
-            font-size: 1.2em;
+            font-size: 1.4em;
+            color: var(--secondary);
+            margin-top: 15px;
         }
 
-        .discount-badge {
-            background: #d1fae5;
-            color: #059669;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.9em;
+        /* Policies Footer */
+        .footer-policies {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding-top: 40px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .policy-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+        }
+
+        .policy-card h3 {
+            color: var(--highlight);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .policy-card ul {
+            list-style: none;
+            padding-right: 10px;
+        }
+
+        .policy-card li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .policy-card li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
             display: inline-block;
-            margin-bottom: 10px;
+            width: 1em;
+            margin-left: -1em;
         }
 
         /* Chatbot */
         .chatbot-btn {
             position: fixed;
             bottom: 30px;
-            right: 30px;
-            background: var(--primary);
+            left: 30px;
+            /* Moved to left to avoid conflict with whatsapp sometimes */
+            background: var(--highlight);
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.5em;
+            font-size: 1.8em;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 25px rgba(167, 139, 250, 0.4);
             transition: transform 0.3s;
             z-index: 1000;
         }
 
         .chatbot-btn:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(10deg);
         }
 
         .chat-window {
             position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 350px;
-            height: 500px;
+            bottom: 110px;
+            left: 30px;
+            width: 360px;
+            height: 550px;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
             display: none;
             flex-direction: column;
             overflow: hidden;
             z-index: 1000;
+            border: 1px solid #edf2f7;
         }
 
         .chat-header {
-            background: var(--primary);
+            background: var(--highlight);
             color: white;
-            padding: 15px;
+            padding: 20px;
             font-weight: bold;
+            font-size: 1.1em;
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         .chat-messages {
             flex-grow: 1;
             padding: 20px;
             overflow-y: auto;
-            background: #f8fafc;
+            background: #f9f9f9;
         }
 
         .message {
             margin-bottom: 15px;
             max-width: 80%;
-            padding: 10px 15px;
-            border-radius: 15px;
-            font-size: 0.9em;
-            line-height: 1.4;
+            padding: 12px 18px;
+            border-radius: 18px;
+            font-size: 0.95em;
+            line-height: 1.5;
+            position: relative;
         }
 
         .message.bot {
             background: white;
-            border-bottom-right-radius: 2px;
+            border-bottom-right-radius: 4px;
             margin-right: auto;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            color: var(--dark);
         }
 
         .message.user {
-            background: var(--primary);
+            background: var(--highlight);
             color: white;
-            border-bottom-left-radius: 2px;
+            border-bottom-left-radius: 4px;
             margin-left: auto;
         }
 
@@ -415,24 +541,6 @@
             gap: 10px;
         }
 
-        .chat-input-area input {
-            flex-grow: 1;
-            padding: 10px;
-            border: 1px solid #e2e8f0;
-            border-radius: 20px;
-            outline: none;
-        }
-
-        .product-recommendation {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 10px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-
-        /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -445,25 +553,6 @@
             }
         }
 
-        @keyframes floating {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        h1.floating {
-            animation: floating 3s ease-in-out infinite;
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--secondary);
-        }
-
         @media (max-width: 768px) {
             .modal-content {
                 grid-template-columns: 1fr;
@@ -471,8 +560,15 @@
 
             .chat-window {
                 width: 90%;
+                left: 5%;
                 right: 5%;
-                bottom: 100px;
+                bottom: 110px;
+            }
+
+            .navbar {
+                padding: 15px;
+                flex-direction: column;
+                gap: 15px;
             }
         }
     </style>
@@ -483,14 +579,19 @@
     <div class="container">
         <!-- Navbar -->
         <nav class="navbar">
-            <div class="logo" onclick="switchView('home')">🎨 نون تويز</div>
+            <div class="logo-container" onclick="switchView('home')">
+                <img src="logo.png" alt="Open Store Logo" class="logo-img">
+                <!-- Fallback text if image missing (unlikely now) -->
+                <!-- <div style="font-size:1.5em; font-weight:bold; color:var(--primary);">Open Store</div> -->
+            </div>
             <div class="nav-icons">
-                <a href="https://wa.me/201000000000" target="_blank"
-                    style="color: #25D366; font-size: 1.5em; text-decoration: none;">
-                    <i class="fab fa-whatsapp"></i> <span style="font-size: 0.6em; vertical-align: middle;">جملة</span>
+                <a href="https://wa.me/201055617855" target="_blank"
+                    style="color: #25D366; font-size: 1.5em; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                    <i class="fab fa-whatsapp"></i> <span
+                        style="font-size: 0.9em; font-weight: bold; color: var(--dark);">جملة</span>
                 </a>
                 <div class="cart-icon" onclick="switchView('cart')">
-                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-shopping-bag"></i>
                     <div class="cart-badge" id="cart-count">0</div>
                 </div>
             </div>
@@ -498,55 +599,103 @@
 
         <!-- Home View -->
         <div id="home-view" class="view-section active">
-            <h1 class="floating">أحدث ألعاب الأطفال</h1>
+
+            <div class="our-goal">
+                <h2>✨ هدفنا</h2>
+                <p>نسعى لتقديم أفضل الألعاب التعليمية والترفيهية التي تنمي مهارات طفلك وتدخل السعادة على قلبه، بجودة
+                    عالية وأسعار مميزة.</p>
+            </div>
 
             <div class="filters">
                 <button class="filter-btn active" onclick="filterProducts('all')">الكل</button>
-                <button class="filter-btn" onclick="filterProducts('0-6m')">0-6 شهور</button>
-                <button class="filter-btn" onclick="filterProducts('6-12m')">6-12 شهر</button>
-                <button class="filter-btn" onclick="filterProducts('1-3y')">1-3 سنوات</button>
-                <button class="filter-btn" onclick="filterProducts('3y+')">+3 سنوات</button>
+                <button class="filter-btn" onclick="filterProducts('0-6m')">0-6 شهور 👶</button>
+                <button class="filter-btn" onclick="filterProducts('6-12m')">6-12 شهر 👼</button>
+                <button class="filter-btn" onclick="filterProducts('1-3y')">1-3 سنوات 🛴</button>
+                <button class="filter-btn" onclick="filterProducts('3y+')">+3 سنوات 🎨</button>
             </div>
 
             <div class="toys-grid" id="products-grid">
                 <!-- Products will be rendered here -->
+            </div>
+
+            <!-- Policies Footer -->
+            <div class="footer-policies">
+                <div class="policy-card">
+                    <h3><i class="fas fa-shipping-fast"></i> سياسة الشحن</h3>
+                    <ul>
+                        <li><strong>القاهرة:</strong> 84 جنيه</li>
+                        <li><strong>الأسكندرية:</strong> 89 جنيه</li>
+                        <li><strong>الدلتا والقناة:</strong> 96 جنيه</li>
+                        <li><strong>الصعيد والبحر الأحمر:</strong> 108 جنيه</li>
+                        <li>مدة التوصيل: 2-5 أيام عمل</li>
+                    </ul>
+                </div>
+                <div class="policy-card">
+                    <h3><i class="fas fa-undo"></i> سياسة الاستبدال والاسترجاع</h3>
+                    <ul>
+                        <li>يمكن استرجاع المنتج خلال 14 يوم من تاريخ الاستلام.</li>
+                        <li>يجب أن يكون المنتج في حالته الأصلية وغير مستخدم.</li>
+                        <li>يتحمل العميل مصاريف الشحن في حالة الاسترجاع (إلا في حالة عيوب الصناعة).</li>
+                    </ul>
+                </div>
+                <div class="policy-card">
+                    <h3><i class="fas fa-headset"></i> خدمة العملاء</h3>
+                    <p>فريقنا جاهز لمساعدتكم طوال الأسبوع.</p>
+                    <p>للاستفسارات والشكاوى تواصلوا معنا عبر الواتساب.</p>
+                </div>
             </div>
         </div>
 
         <!-- Cart View -->
         <div id="cart-view" class="view-section">
             <div class="checkout-form">
-                <h2>🛒 سلة المشتريات</h2>
-                <div id="cart-items" style="margin-top: 20px;">
+                <h2 style="text-align: center; color: var(--secondary); margin-bottom: 30px;">🛒 سلة المشتريات</h2>
+                <div id="cart-items">
                     <!-- Cart items render here -->
                 </div>
 
                 <div class="summary-card" id="cart-summary" style="display: none;">
-                    <div id="discount-message" class="discount-badge" style="display: none;">🎉 مبروك! حصلت على خصم 15%
+                    <div id="discount-message"
+                        style="background: #dafbf0; color: #0f766e; padding: 10px; border-radius: 8px; text-align: center; margin-bottom: 20px; font-weight: bold; display: none;">
+                        🎉 مبروك! حصلت على خصم 15%
                     </div>
                     <div class="summary-row"><span>المجموع الفرعي:</span><span id="subtotal">0</span></div>
                     <div class="summary-row"><span>الخصم:</span><span id="discount">0</span></div>
 
-                    <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
+                    <hr style="margin: 20px 0; border: 0; border-top: 1px dashed #cbd5e0;">
 
-                    <h3>بيانات الشحن</h3>
+                    <h3 style="margin-bottom: 20px; color: var(--dark);">📍 بيانات الشحن</h3>
                     <div class="form-group">
                         <label>الاسم بالكامل</label>
-                        <input type="text" id="customer-name" placeholder="مثال: أحمد محمد">
+                        <input type="text" id="customer-name" placeholder="الاسم الثلاثي">
                     </div>
                     <div class="form-group">
                         <label>رقم الهاتف</label>
                         <input type="tel" id="customer-phone" placeholder="01xxxxxxxxx">
                     </div>
+
+                    <!-- New Address Fields -->
                     <div class="form-group">
-                        <label>المنطقة (لحساب الشحن)</label>
+                        <label>المحافظة (المنطقة)</label>
                         <select id="shipping-region" onchange="updateTotal()">
-                            <option value="0">اختر المنطقة...</option>
-                            <option value="84">القاهرة</option>
-                            <option value="89">الأسكندرية</option>
-                            <option value="96">الدلتا والقناة</option>
-                            <option value="108">الصعيد والبحر الأحمر</option>
+                            <option value="0">اختر المحافظة...</option>
+                            <option value="84">القاهرة (84 ج.م)</option>
+                            <option value="89">الأسكندرية (89 ج.م)</option>
+                            <option value="96">الدلتا والقناة (96 ج.م)</option>
+                            <option value="108">الصعيد والبحر الأحمر (108 ج.م)</option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label>المنطقة / الحي</label>
+                        <input type="text" id="address-area" placeholder="مثال: المعادي، سموحة...">
+                    </div>
+                    <div class="form-group">
+                        <label>الشارع</label>
+                        <input type="text" id="address-street" placeholder="اسم الشارع">
+                    </div>
+                    <div class="form-group">
+                        <label>رقم العمارة / الدور / الشقة</label>
+                        <input type="text" id="address-building" placeholder="تفاصيل المبنى">
                     </div>
 
                     <div class="summary-row"><span>مصاريف الشحن:</span><span id="shipping-cost">0</span></div>
@@ -555,14 +704,21 @@
                         <span id="grand-total">0</span>
                     </div>
 
-                    <button class="add-btn" onclick="submitOrder()">✅ إتمام الطلب (واتساب)</button>
+                    <button class="add-btn" onclick="submitOrder()" style="background: #25D366;">
+                        <i class="fab fa-whatsapp"></i> إتمام الطلب عبر واتساب
+                    </button>
+                    <button class="add-btn" onclick="switchView('home')"
+                        style="background: white; color: var(--text-gray); border: 1px solid #ddd; margin-top: 10px;">
+                        استكمال التسوق
+                    </button>
                 </div>
 
                 <div id="empty-cart-msg" style="text-align: center; padding: 40px; color: #aaa;">
-                    <i class="fas fa-shopping-basket" style="font-size: 3em; margin-bottom: 20px;"></i>
-                    <p>السلة فارغة حالياً</p>
-                    <button class="add-btn" style="width: auto; margin-top: 20px;" onclick="switchView('home')">تسوق
-                        الآن</button>
+                    <i class="fas fa-shopping-basket" style="font-size: 4em; margin-bottom: 20px; color: #eee;"></i>
+                    <p style="font-size: 1.2em;">السلة فارغة حالياً</p>
+                    <button class="add-btn"
+                        style="width: auto; margin-top: 20px; background: var(--primary); color: var(--dark);"
+                        onclick="switchView('home')">تصفح المنتجات</button>
                 </div>
             </div>
         </div>
@@ -573,16 +729,16 @@
     <div id="product-modal" class="modal">
         <div class="modal-content">
             <div class="close-modal" onclick="closeModal()">&times;</div>
-            <div>
+            <div style="text-align: center; background: #fafafa; border-radius: 20px; padding: 20px;">
                 <img id="modal-img" src="" class="product-detail-img">
             </div>
-            <div>
-                <h2 id="modal-title" style="margin-bottom: 15px;"></h2>
-                <div id="modal-price" class="toy-price" style="margin-bottom: 20px; font-size: 1.5em;"></div>
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <h2 id="modal-title" style="margin-bottom: 15px; font-size: 1.8em; color: var(--dark);"></h2>
+                <div id="modal-price" class="toy-price" style="margin-bottom: 20px; font-size: 2em;"></div>
                 <div id="modal-age"
-                    style="background: #edf2f7; padding: 5px 10px; border-radius: 5px; display: inline-block; margin-bottom: 20px; font-size: 0.9em;">
+                    style="background: var(--light); color: var(--dark); padding: 8px 15px; border-radius: 10px; display: inline-block; margin-bottom: 25px; font-weight: bold; width: fit-content;">
                 </div>
-                <p id="modal-desc" style="line-height: 1.8; color: #4a5568; margin-bottom: 30px;"></p>
+                <p id="modal-desc" style="line-height: 1.8; color: #4a5568; margin-bottom: 30px; font-size: 1.1em;"></p>
                 <button class="add-btn" id="modal-add-btn">إضافة للسلة 🛒</button>
             </div>
         </div>
@@ -595,77 +751,74 @@
 
     <div class="chat-window" id="chat-window">
         <div class="chat-header">
-            <span>مساعد الألعاب الذكي 🤖</span>
+            <span>🤖 مساعد Open Store</span>
             <span style="cursor: pointer;" onclick="toggleChat()">&times;</span>
         </div>
         <div class="chat-messages" id="chat-messages">
-            <div class="message bot">أهلاً بك! 👋 أنا هنا لمساعدتك في اختيار اللعبة المناسبة. كم عمر طفلك؟</div>
+            <div class="message bot">أهلاً بك في Open Store! 👋 <br>أنا هنا لمساعدتك في اختيار اللعبة المناسبة. كم عمر
+                طفلك؟</div>
         </div>
         <div class="chat-input-area">
-            <input type="text" id="chat-input" placeholder="اكتب هنا..." onkeypress="handleChatInput(event)">
-            <button class="add-btn" style="width: auto; margin: 0; padding: 0 15px;" onclick="sendMessage()"><i
-                    class="fas fa-paper-plane"></i></button>
+            <input type="text" id="chat-input" placeholder="اكتب هنا (مثال: 3 سنوات)..."
+                onkeypress="handleChatInput(event)">
+            <button class="add-btn"
+                style="width: auto; margin: 0; padding: 0 15px; border-radius: 50%; width: 45px; height: 45px;"
+                onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
     <script>
-        // Data
+        // Data populated with local image paths
         const products = [
-            { id: 1, name: "سجادة أطفال فوم دابل فيس", price: 720, age: "0-6m", img: "https://drive.google.com/uc?export=view&id=1cO3dHJDazv3E00NSOki5GpcEdSE79ABO", desc: "سجادة المهام الصعبه مهمه جدا في كل بيت فيه اطفال متعدده الاستخدامات ( للزحف . للعب . للاكل ). مقاس كبير 180*200 سم، وتربروف." },
-            { id: 2, name: "الكتاب الالكتروني الناطق", price: 350, age: "6-12m", img: "https://drive.google.com/uc?export=view&id=11ACNvp0CsOAJ46cZATzxclIYaehaWz0t", desc: "افضل كتاب صوتي لتعليم الطفل (حروف، حيوانات، مواصلات). محفز بصري وسمعي." },
-            { id: 3, name: "موبايل ببرونة + عضاضة", price: 185, age: "0-6m", img: "https://drive.google.com/uc?export=view&id=1qYQjzSNKBTV2PLPpMouUn5auh2eyjyRT", desc: "موبايل ببرونة 15 زر، اضاءة واصوات حيوانات وارقام. آمن كعضاضة." },
-            { id: 4, name: "مصباح إسقاط سحري", price: 435, age: "0-6m", img: "https://drive.google.com/uc?export=view&id=1Vm2TX9lRTEgX1mT-qVCjS_5aDacAbEQi", desc: "أباجورة تعرض رسومات متحركة (بحر، كواكب) مع موسيقى هادئة للنوم." },
-            { id: 5, name: "لوحة التلوين السحرية", price: 160, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1kVUvV6JqYnw6B12msJ-rdLRIDa8ikIfF", desc: "مقاس 80x80. تتحول لألوان مبهجة عند التلوين. تنمي الإبداع." },
-            { id: 6, name: "طقم رسم Spiral Art", price: 200, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1K57g_ptHtFVT0GHTlR1669lMPJirr9ES", desc: "رسم اشكال حلزونية هندسية رائعة. تنمي الدقة والفن." },
-            { id: 7, name: "عروسة بيبي رمضان", price: 750, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1ZtzvVivQh_9JKRC74-_Va6fbe32seOw1", desc: "عروسة بتغني اغاني رمضان، هدية مثالية للموسم." },
-            { id: 8, name: "بيانو البطة", price: 340, age: "6-12m", img: "https://drive.google.com/uc?export=view&id=1k9hmlUgEIvzUOsiSzLRLoiSvL74ygj_9", desc: "بيانو موسيقي باصوات حيوانات واضواء." },
-            { id: 9, name: "مغناطيس أذكار", price: 30, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1hNI7Jq2h_AZAD-H6ynRQYdoTSQELgNCp", desc: "قطع ممغنطة للثلاجة بأذكار الصباح والمساء." },
-            { id: 10, name: "عروسة رمضان المتحركة", price: 275, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1CNo8z4wyUvxaxi3qVdwbKq_8jGP3JyRK", desc: "مفاصل متحركة، تغني اغاني رمضان." },
-            { id: 11, name: "فانوس رمضان المعلق", price: 75, age: "1-3y", img: "https://drive.google.com/uc?export=view&id=1csqLQ7EpGtgzcC2rClxf5RSkuD1DOlqy", desc: "تصميم عصري وآمن للتعليق." },
-            { id: 12, name: "بلورة رمضان", price: 225, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1zLObch_KN_jVdTLFCaFpiaWKDjfzXEil", desc: "بلورة ثلجية بموسيقى واضاءة." },
-            { id: 13, name: "فانوس ديزني", price: 275, age: "1-3y", img: "https://drive.google.com/uc?export=view&id=1Qk2AruaQsj-cSKppExZmqCb36ocDv50m", desc: "فانوس بأشكال شخصيات ديزني، صوت ونور." },
-            { id: 14, name: "لعبة تقطيع الفواكه", price: 160, age: "3y+", img: "https://drive.google.com/uc?export=view&id=11HL73rVIn2wnab9loZINDtoTufkU9fb8", desc: "فواكه قابلة للتقطيع بسكينة آمنة. تعلم المهارات اليومية." },
-            { id: 15, name: "باترون مع كروت", price: 225, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1gga8Af_b1O3rzhy3MfYjeELc5zXrC_KR", desc: "180 قطعة لتشكيل انماط مختلفة." },
-            { id: 16, name: "كلب في حقيبة", price: 375, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1qTIT-cnugNNfGWEepkjjG7EFAP_GylVq", desc: "لعبة عناية بالحيوانات الأليفة مع ادوات كاملة." },
-            { id: 17, name: "لعبة الذاكرة 2 في 1", price: 410, age: "1-3y", img: "https://drive.google.com/uc?export=view&id=1Vflq9eEr8GcP4vMb9CMz51UcnQe_ZVyb", desc: "تطابق الذاكرة وتصنيف الألوان." },
-            { id: 18, name: "Matching Dinos", price: 340, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1DDsUykKMqv2lX1rOKWjfuNctVYMPoYD9", desc: "مطابقة الحروف والاشكال بالديناصورات." },
-            { id: 19, name: "علبة ألوان واسكتش", price: 180, age: "3y+", img: "https://drive.google.com/uc?export=view&id=17-TPe0XzqFv6gikT73M7bahldNzQldyB", desc: "طقم كامل (شمع، خشب، مياه، فلوماستر) مع اسكتش." },
-            { id: 20, name: "تنجرام Tangram", price: 85, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1-ZC5TIflEq8P6aMRe9u0wByJt-_3uPDP", desc: "لغز التفكير المنطقي والهندسي." },
-            { id: 21, name: "صندوق الحساب", price: 95, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1hLKDLfpQPZz49ygmdmMaGhdmlkLZAJSQ", desc: "اعواد وارقام خشبية لتعليم العمليات الحسابية." },
-            { id: 22, name: "دريكسيون اطفال", price: 165, age: "1-3y", img: "https://drive.google.com/uc?export=view&id=18HEU_hbdhXRxoFNfiqp_pa9IVu-hnirg", desc: "محاكاة القيادة مع اصوات واشارات." },
-            { id: 23, name: "رمل سحري", price: 170, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1kZjc3AVRr7ZVfdhswUjLq8zEpoXRpffU", desc: "450 جرام رمل آمن للتشكيل مع قوالب." },
-            { id: 24, name: "مكعب وشاكوش", price: 240, age: "1-3y", img: "https://drive.google.com/uc?export=view&id=1OVpYME7AyKfI1vS_7v1feLR2ALijEJsQ", desc: "تطابق اشكال وطرق بالشاكوش لتقوية العضلات." },
-            { id: 25, name: "أقلام Outline", price: 200, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1Fj_QHnfs4mjqfjSFafWopTcBbzl61OJp", desc: "اقلام فضية باطار ملون سحري." },
-            { id: 26, name: "مكعب تطابق الأشكال", price: 245, age: "1-3y", img: "https://drive.google.com/uc?export=view&id=1rwvlDF3me9tpTp30iBP2YAzbreVa8JZU", desc: "مكعب كلاسيكي لتعلم الاشكال." },
-            { id: 27, name: "مطبخ كبير 42 قطعة", price: 860, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1qA8LN0dfxOiZP729aicac73S93_JzfLB", desc: "مطبخ تفاعلي كامل (صوت، نور، حنفية، فرن)." },
-            { id: 28, name: "مشاية أطفال", price: 1010, age: "6-12m", img: "https://drive.google.com/uc?export=view&id=1CZbX5NdnferepuWfE5ukdcDbw_CjFrR2", desc: "مشاية بـ 6 عجلات، قابلة للطي، مع العاب وموسيقى." },
-            { id: 29, name: "تسريحة فروزن", price: 440, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1HL8qipp0DsdtIB4KIifiw8kRd_Er0w25", desc: "شنطة تتحول لتسريحة مع اكسسوارات." },
-            { id: 30, name: "سلم وثعبان عملاقة", price: 200, age: "3y+", img: "https://drive.google.com/uc?export=view&id=13Fop974XNZEuzn1JkwKtSu8P8eGgNXvV", desc: "لعبة عائلية كلاسيكية بحجم كبير." },
-            { id: 31, name: "ميزان البطريق", price: 250, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1lV9zPK9__NhYDWHnWxrmZRh6RY16qCZu", desc: "لعبة تعليم التوازن والعد (السعر تقديري 250)." },
-            { id: 32, name: "شخشيخة فيل", price: 140, age: "0-6m", img: "https://drive.google.com/uc?export=view&id=1cF0rVFDx1-P5VsDwY7ujBmpgAAwtsom5", desc: "شخشيخة موسيقية مع عضاضة." },
-            { id: 33, name: "كلب قطيفة", price: 470, age: "1-3y", img: "https://drive.google.com/uc?export=view&id=1zZIBALhssxJJ8hBlCrdQk-nXqcw5BSAF", desc: "دمية ناعمة بجودة عالية." },
-            { id: 34, name: "ترابيزة مكعبات", price: 640, age: "1-3y", img: "https://drive.google.com/uc?export=view&id=1T6FaFWdIdXkJU7mJrkufodsGlC1m0NVB", desc: "طاولة لعب + كرسي + لوح مكعبات." },
-            { id: 35, name: "بازوكا بابلز", price: 160, age: "3y+", img: "https://drive.google.com/uc?export=view&id=114VOnxdLY7g50iWTearIZj6mRsurISpP", desc: "مسدس فقاعات قوي للمناسبات." },
-            { id: 36, name: "مسدس بابلز صغير", price: 185, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1kpf3i8XZxGN6tjHqvHrW2fKPeQJjZSNX", desc: "تصميم انيق واضاءة، بدون فوضى." },
-            { id: 37, name: "لوجيكو أشكال", price: 240, age: "1-3y", img: "https://drive.google.com/uc?export=view&id=1_KYLeyp8jHS23PfD-rD6a7awqNNYsIfJ", desc: "تعليم الاشكال والالوان والمنطق." },
-            { id: 38, name: "مكعب انشطة 6 في 1", price: 510, age: "6-12m", img: "https://drive.google.com/uc?export=view&id=122uz1jAwLbgql5D9yzYwx3oasHFEiL0I", desc: "بيانو، تروس، شكال، ساعة.. مكعب شامل." },
-            { id: 39, name: "باربي وحصان", price: 360, age: "3y+", img: "https://drive.google.com/uc?export=view&id=10EAxSEM-q8OhTRjFaZFvh_oYEyxqJvsv", desc: "دمية كاملة المفاصل مع حصان." },
-            { id: 40, name: "مطبخ 37 قطعة", price: 290, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1aFkxBtu3atjzAiCh9MBzdPOMsL5EpOzp", desc: "مطبخ تفاعلي اصغر حجما، صوت ونور." },
-            { id: 41, name: "فرشاة اسنان U-Shape", price: 55, age: "1-3y", img: "https://drive.google.com/uc?export=view&id=19reJZJ5pB6nouB1NfQla9jshScvpH2-M", desc: "تنظيف كامل للاسنان بسهولة." },
-            { id: 42, name: "شطرنج الذاكرة", price: 135, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1LEfYJJzsN19yrjQw2-52tqOkRdXbLPn4", desc: "لعبة خشبية لتقوية الذاكرة." },
-            { id: 43, name: "ليجو 1000 قطعة", price: 499, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1ZzaHN_iMQ319Yswt-51scSXmsPDd2H0a", desc: "مجموعة بناء ضخمة للابداع الحر." },
-            { id: 44, name: "2 في 1 (كرة وسلة)", price: 305, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1fAnyfPxYgxaAjsyvkxQTQ4tSvz-fdc93", desc: "مرمى وباسكت في لعبة واحدة." },
-            { id: 45, name: "الوان ماركر Touch", price: 230, age: "3y+", img: "https://drive.google.com/uc?export=view&id=1qDZKM6xQpLH8neKG0No1wI6OY-3tXB97", desc: "الوان مزدوجة الرأس (48 قطعة)." },
-            { id: 46, name: "قطار الكلب", price: 500, age: "6-12m", img: "https://drive.google.com/uc?export=view&id=1OEt_qaboFRdL0K06Q552VgJS_epaJDI-", desc: "لعبة تحفيز الحبو والمشي." }
+            { id: 1, name: "سجادة أطفال فوم دابل فيس", price: 720, age: "0-6m", img: "img/1.jpg", desc: "سجادة المهام الصعبه مهمه جدا في كل بيت فيه اطفال متعدده الاستخدامات ( للزحف . للعب . للاكل ). مقاس كبير 180*200 سم، وتربروف." },
+            { id: 2, name: "الكتاب الالكتروني الناطق", price: 350, age: "6-12m", img: "img/2.jpg", desc: "افضل كتاب صوتي لتعليم الطفل (حروف، حيوانات، مواصلات). محفز بصري وسمعي." },
+            { id: 3, name: "موبايل ببرونة + عضاضة", price: 185, age: "0-6m", img: "img/3.jpg", desc: "موبايل ببرونة 15 زر، اضاءة واصوات حيوانات وارقام. آمن كعضاضة." },
+            { id: 4, name: "مصباح إسقاط سحري", price: 435, age: "0-6m", img: "img/4.jpg", desc: "أباجورة تعرض رسومات متحركة (بحر، كواكب) مع موسيقى هادئة للنوم." },
+            { id: 5, name: "لوحة التلوين السحرية", price: 160, age: "3y+", img: "img/5.jpg", desc: "مقاس 80x80. تتحول لألوان مبهجة عند التلوين. تنمي الإبداع." },
+            { id: 6, name: "طقم رسم Spiral Art", price: 200, age: "3y+", img: "img/6.jpg", desc: "رسم اشكال حلزونية هندسية رائعة. تنمي الدقة والفن." },
+            { id: 7, name: "عروسة بيبي رمضان", price: 750, age: "3y+", img: "img/7.jpg", desc: "عروسة بتغني اغاني رمضان، هدية مثالية للموسم." },
+            { id: 8, name: "بيانو البطة", price: 340, age: "6-12m", img: "img/8.jpg", desc: "بيانو موسيقي باصوات حيوانات واضواء." },
+            { id: 9, name: "مغناطيس أذكار", price: 30, age: "3y+", img: "img/9.jpg", desc: "قطع ممغنطة للثلاجة بأذكار الصباح والمساء." },
+            { id: 10, name: "عروسة رمضان المتحركة", price: 275, age: "3y+", img: "img/10.jpg", desc: "مفاصل متحركة، تغني اغاني رمضان." },
+            { id: 11, name: "فانوس رمضان المعلق", price: 75, age: "1-3y", img: "img/11.jpg", desc: "تصميم عصري وآمن للتعليق." },
+            { id: 12, name: "بلورة رمضان", price: 225, age: "3y+", img: "img/12.jpg", desc: "بلورة ثلجية بموسيقى واضاءة." },
+            { id: 13, name: "فانوس ديزني", price: 275, age: "1-3y", img: "img/13.jpg", desc: "فانوس بأشكال شخصيات ديزني، صوت ونور." },
+            { id: 14, name: "لعبة تقطيع الفواكه", price: 160, age: "3y+", img: "img/14.jpg", desc: "فواكه قابلة للتقطيع بسكينة آمنة. تعلم المهارات اليومية." },
+            { id: 15, name: "باترون مع كروت", price: 225, age: "3y+", img: "img/15.jpg", desc: "180 قطعة لتشكيل انماط مختلفة." },
+            { id: 16, name: "كلب في حقيبة", price: 375, age: "3y+", img: "img/16.jpg", desc: "لعبة عناية بالحيوانات الأليفة مع ادوات كاملة." },
+            { id: 17, name: "لعبة الذاكرة 2 في 1", price: 410, age: "1-3y", img: "img/17.jpg", desc: "تطابق الذاكرة وتصنيف الألوان." },
+            { id: 18, name: "Matching Dinos", price: 340, age: "3y+", img: "img/18.jpg", desc: "مطابقة الحروف والاشكال بالديناصورات." },
+            { id: 19, name: "علبة ألوان واسكتش", price: 180, age: "3y+", img: "img/19.jpg", desc: "طقم كامل (شمع، خشب، مياه، فلوماستر) مع اسكتش." },
+            { id: 20, name: "تنجرام Tangram", price: 85, age: "3y+", img: "img/20.jpg", desc: "لغز التفكير المنطقي والهندسي." },
+            { id: 21, name: "صندوق الحساب", price: 95, age: "3y+", img: "img/21.jpg", desc: "اعواد وارقام خشبية لتعليم العمليات الحسابية." },
+            { id: 22, name: "دريكسيون اطفال", price: 165, age: "1-3y", img: "img/22.jpg", desc: "محاكاة القيادة مع اصوات واشارات." },
+            { id: 23, name: "رمل سحري", price: 170, age: "3y+", img: "img/23.jpg", desc: "450 جرام رمل آمن للتشكيل مع قوالب." },
+            { id: 24, name: "مكعب وشاكوش", price: 240, age: "1-3y", img: "img/24.jpg", desc: "تطابق اشكال وطرق بالشاكوش لتقوية العضلات." },
+            { id: 25, name: "أقلام Outline", price: 200, age: "3y+", img: "img/25.jpg", desc: "اقلام فضية باطار ملون سحري." },
+            { id: 26, name: "مكعب تطابق الأشكال", price: 245, age: "1-3y", img: "img/26.jpg", desc: "مكعب كلاسيكي لتعلم الاشكال." },
+            { id: 27, name: "مطبخ كبير 42 قطعة", price: 860, age: "3y+", img: "img/27.jpg", desc: "مطبخ تفاعلي كامل (صوت، نور، حنفية، فرن)." },
+            { id: 28, name: "مشاية أطفال", price: 1010, age: "6-12m", img: "img/28.jpg", desc: "مشاية بـ 6 عجلات، قابلة للطي، مع العاب وموسيقى." },
+            { id: 29, name: "تسريحة فروزن", price: 440, age: "3y+", img: "img/29.jpg", desc: "شنطة تتحول لتسريحة مع اكسسوارات." },
+            { id: 30, name: "سلم وثعبان عملاقة", price: 200, age: "3y+", img: "img/30.jpg", desc: "لعبة عائلية كلاسيكية بحجم كبير." },
+            { id: 31, name: "ميزان البطريق", price: 250, age: "3y+", img: "img/31.jpg", desc: "لعبة تعليم التوازن والعد (السعر تقديري 250)." },
+            { id: 32, name: "شخشيخة فيل", price: 140, age: "0-6m", img: "img/32.jpg", desc: "شخشيخة موسيقية مع عضاضة." },
+            { id: 33, name: "كلب قطيفة", price: 470, age: "1-3y", img: "img/33.jpg", desc: "دمية ناعمة بجودة عالية." },
+            { id: 34, name: "ترابيزة مكعبات", price: 640, age: "1-3y", img: "img/34.jpg", desc: "طاولة لعب + كرسي + لوح مكعبات." },
+            { id: 35, name: "بازوكا بابلز", price: 160, age: "3y+", img: "img/35.jpg", desc: "مسدس فقاعات قوي للمناسبات." },
+            { id: 36, name: "مسدس بابلز صغير", price: 185, age: "3y+", img: "img/36.jpg", desc: "تصميم انيق واضاءة، بدون فوضى." },
+            { id: 37, name: "لوجيكو أشكال", price: 240, age: "1-3y", img: "img/37.jpg", desc: "تعليم الاشكال والالوان والمنطق." },
+            { id: 38, name: "مكعب انشطة 6 في 1", price: 510, age: "6-12m", img: "img/38.jpg", desc: "بيانو، تروس، شكال، ساعة.. مكعب شامل." },
+            { id: 39, name: "باربي وحصان", price: 360, age: "3y+", img: "img/39.jpg", desc: "دمية كاملة المفاصل مع حصان." },
+            { id: 40, name: "مطبخ 37 قطعة", price: 290, age: "3y+", img: "img/40.jpg", desc: "مطبخ تفاعلي اصغر حجما، صوت ونور." },
+            { id: 41, name: "فرشاة اسنان U-Shape", price: 55, age: "1-3y", img: "img/41.jpg", desc: "تنظيف كامل للاسنان بسهولة." },
+            { id: 42, name: "شطرنج الذاكرة", price: 135, age: "3y+", img: "img/42.jpg", desc: "لعبة خشبية لتقوية الذاكرة." },
+            { id: 43, name: "ليجو 1000 قطعة", price: 499, age: "3y+", img: "img/43.jpg", desc: "مجموعة بناء ضخمة للابداع الحر." },
+            { id: 44, name: "2 في 1 (كرة وسلة)", price: 305, age: "3y+", img: "img/44.jpg", desc: "مرمى وباسكت في لعبة واحدة." },
+            { id: 45, name: "الوان ماركر Touch", price: 230, age: "3y+", img: "img/45.jpg", desc: "الوان مزدوجة الرأس (48 قطعة)." },
+            { id: 46, name: "قطار الكلب", price: 500, age: "6-12m", img: "img/46.jpg", desc: "لعبة تحفيز الحبو والمشي." }
         ];
 
         let cart = [];
-        const shippingRates = {
-            '84': 84,   // Cairo
-            '89': 89,   // Alex
-            '96': 96,   // Delta
-            '108': 108  // Upper Egypt
-        };
 
         // Initialize
         function init() {
@@ -677,51 +830,40 @@
             const grid = document.getElementById('products-grid');
             grid.innerHTML = '';
 
-            const filtered = category === 'all' 
-                ? products 
-                : products.filter(p => p.age === category || (category === '3y+' && (p.age === '3y+' || p.age === '1-3y'))); // Inclusive logic optionally
+            const filtered = category === 'all'
+                ? products
+                : products.filter(p => p.age === category || (category === '3y+' && (p.age === '3y+' || p.age === '1-3y')));
 
-            // Strict filtering for now based on exact tags in my data, or simple mapping
-            /* 
-               Data tags: 0-6m, 6-12m, 1-3y, 3y+
-               Filter btns: 0-6m, 6-12m, 1-3y, 3y+
-            */
-           
-           const finalFiltered = category === 'all' ? products : products.filter(p => p.age === category);
+            const finalFiltered = category === 'all' ? products : products.filter(p => p.age === category);
 
-           if(finalFiltered.length === 0) {
-               grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">لا توجد منتجات في هذا القسم حالياً</p>';
-               return;
-           }
+            if (finalFiltered.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-gray);">لا توجد منتجات في هذا القسم حالياً</p>';
+                return;
+            }
 
             finalFiltered.forEach(product => {
                 const card = document.createElement('div');
                 card.className = 'toy-card';
                 card.onclick = (e) => {
-                    if(!e.target.classList.contains('add-btn')) {
+                    if (!e.target.classList.contains('add-btn')) {
                         openProductModal(product);
                     }
                 };
                 card.innerHTML = `
-                    <img src="${product.img}" class="toy-image" alt="${product.name}">
+                    <div style="width:100%; text-align:center;"><img src="${product.img}" class="toy-image" alt="${product.name}" onerror="this.src='https://via.placeholder.com/250x250?text=Open+Store'"></div>
                     <div class="toy-info">
                         <h3 class="toy-title">${product.name}</h3>
-                        <div class="toy-price">${product.price} جنيه</div>
-                        <button class="add-btn" onclick="addToCart(${product.id})">إضافة للسلة 🛒</button>
+                        <div class="toy-price">${product.price} ج.م</div>
+                        <button class="add-btn" onclick="addToCart(${product.id})">إضافة للسلة <i class="fas fa-cart-plus"></i></button>
                     </div>
                 `;
                 grid.appendChild(card);
             });
 
-            // Update active filter button
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            // Find button with matching onclick text (simple way)
-            // Or just pass element to function. Here simple logic:
-            // Handled better in React, vanilla needs manual toggle or simple click handler update.
-            // Let's just leave visual toggle logic for simplicity or select by content logic if needed.
-             document.querySelectorAll('.filter-btn').forEach(btn => {
-                 if(btn.onclick.toString().includes(category)) btn.classList.add('active');
-             });
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.onclick.toString().includes(category)) btn.classList.add('active');
+            });
         }
 
         function filterProducts(category) {
@@ -747,18 +889,18 @@
         function addToCart(id) {
             const product = products.find(p => p.id === id);
             const existing = cart.find(item => item.id === id);
-            
-            if(existing) {
+
+            if (existing) {
                 existing.qty++;
             } else {
                 cart.push({ ...product, qty: 1 });
             }
             updateCartUI();
-            
-            // Simple visual feedback
-            const cartBtn = document.querySelector('.cart-icon');
-            cartBtn.style.transform = 'scale(1.2)';
-            setTimeout(() => cartBtn.style.transform = 'scale(1)', 200);
+
+            // Effect
+            const cartIcon = document.querySelector('.cart-icon');
+            cartIcon.style.transform = 'scale(1.3)';
+            setTimeout(() => cartIcon.style.transform = 'scale(1)', 200);
         }
 
         function updateCartUI() {
@@ -769,8 +911,8 @@
         function renderCartItems() {
             const container = document.getElementById('cart-items');
             container.innerHTML = '';
-            
-            if(cart.length === 0) {
+
+            if (cart.length === 0) {
                 document.getElementById('empty-cart-msg').style.display = 'block';
                 document.getElementById('cart-summary').style.display = 'none';
                 return;
@@ -783,12 +925,12 @@
                 const div = document.createElement('div');
                 div.className = 'cart-item';
                 div.innerHTML = `
-                    <img src="${item.img}">
+                    <img src="${item.img}" onerror="this.src='https://via.placeholder.com/80'">
                     <div style="flex-grow: 1;">
-                        <h4>${item.name}</h4>
-                        <div style="color: var(--accent);">${item.price * item.qty} جنيه</div>
+                        <h4 style="margin-bottom:5px;">${item.name}</h4>
+                        <div style="color: var(--secondary); font-weight:bold;">${item.price * item.qty} جنيه</div>
                     </div>
-                    <div class="cart-controls">
+                    <div style="display:flex; align-items:center; gap:10px;">
                         <button class="qty-btn" onclick="updateQty(${item.id}, -1)">-</button>
                         <span>${item.qty}</span>
                         <button class="qty-btn" onclick="updateQty(${item.id}, 1)">+</button>
@@ -802,9 +944,9 @@
 
         function updateQty(id, change) {
             const item = cart.find(i => i.id === id);
-            if(item) {
+            if (item) {
                 item.qty += change;
-                if(item.qty <= 0) {
+                if (item.qty <= 0) {
                     cart = cart.filter(i => i.id !== id);
                 }
             }
@@ -814,17 +956,15 @@
         function updateTotal() {
             const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            
-            // Discount Logic: Buy 2 get 15% off
+
             let discount = 0;
-            if(totalQty >= 2) {
+            if (totalQty >= 2) {
                 discount = Math.round(subtotal * 0.15);
-                document.getElementById('discount-message').style.display = 'inline-block';
+                document.getElementById('discount-message').style.display = 'block';
             } else {
                 document.getElementById('discount-message').style.display = 'none';
             }
 
-            // Shipping
             const region = document.getElementById('shipping-region').value;
             const shipping = parseInt(region);
 
@@ -839,12 +979,12 @@
         // View Switching
         function switchView(viewName) {
             document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-            if(viewName === 'home') document.getElementById('home-view').classList.add('active');
-            if(viewName === 'cart') {
+            if (viewName === 'home') document.getElementById('home-view').classList.add('active');
+            if (viewName === 'cart') {
                 document.getElementById('cart-view').classList.add('active');
                 renderCartItems();
             }
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
         }
 
         // WhatsApp Checkout
@@ -853,89 +993,102 @@
             const phone = document.getElementById('customer-phone').value;
             const regionSelect = document.getElementById('shipping-region');
             const regionName = regionSelect.options[regionSelect.selectedIndex].text;
-            
-            if(!name || !phone || regionSelect.value == 0) {
-                alert('الرجاء إكمال البيانات (الاسم، الهاتف، المنطقة) للاستمرار');
+            const area = document.getElementById('address-area').value;
+            const street = document.getElementById('address-street').value;
+            const building = document.getElementById('address-building').value;
+
+            if (!name || !phone || regionSelect.value == 0 || !area || !street || !building) {
+                alert('الرجاء إكمال جميع البيانات (الاسم، الهاتف، العنوان بالتفصيل) 🛑');
                 return;
             }
 
-            let msg = `*طلب جديد من الموقع* 🛍️\n\n`;
-            msg += `*العميل:* ${name}\n`;
-            msg += `*الهاتف:* ${phone}\n`;
-            msg += `*العنوان:* ${regionName}\n\n`;
-            msg += `*الطلبات:* \n`;
-            
+            let msg = `*طلب جديد من Open Store* 🛍️ ✨\n\n`;
+            msg += `*👤 العميل:* ${name}\n`;
+            msg += `*📞 الهاتف:* ${phone}\n`;
+            msg += `*📍 العنوان:* ${regionName} - ${area}\n`;
+            msg += `*🏠 تفاصيل:* شارع ${street} - ${building}\n\n`;
+            msg += `*📋 الطلبات:* \n`;
+
             cart.forEach(item => {
                 msg += `- ${item.name} (x${item.qty})\n`;
             });
 
             const total = document.getElementById('grand-total').innerText;
-            msg += `\n*الإجمالي:* ${total}`;
+            msg += `\n*💰 الإجمالي شامل الشحن والخصم:* ${total}`;
 
-            const url = `https://wa.me/201000000000?text=${encodeURIComponent(msg)}`;
+            // New Number
+            const url = `https://wa.me/201055617855?text=${encodeURIComponent(msg)}`;
             window.open(url, '_blank');
         }
 
         // Chatbot Logic
         function toggleChat() {
             const win = document.getElementById('chat-window');
-            if(win.style.display === 'flex') win.style.display = 'none';
+            if (win.style.display === 'flex') win.style.display = 'none';
             else win.style.display = 'flex';
         }
 
         function handleChatInput(e) {
-            if(e.key === 'Enter') sendMessage();
+            if (e.key === 'Enter') sendMessage();
         }
 
         function sendMessage() {
             const input = document.getElementById('chat-input');
             const txt = input.value.trim();
-            if(!txt) return;
+            if (!txt) return;
 
             addMessage(txt, 'user');
             input.value = '';
 
-            // Simple Logic to find age in input
             setTimeout(() => {
                 let foundAge = null;
-                if(txt.includes('شهر') || txt.includes('شهور')) {
+                if (txt.includes('شهر') || txt.includes('شهور')) {
                     const num = parseInt(txt.match(/\d+/));
-                    if(num <= 6) foundAge = '0-6m';
-                    else if(num <= 12) foundAge = '6-12m';
-                } else if(txt.includes('سنة') || txt.includes('سنوات')) {
+                    if (num <= 6) foundAge = '0-6m';
+                    else if (num <= 12) foundAge = '6-12m';
+                } else if (txt.includes('سنة') || txt.includes('سنوات')) {
                     const num = parseInt(txt.match(/\d+/));
-                    if(num < 3) foundAge = '1-3y';
+                    if (num < 3) foundAge = '1-3y';
                     else foundAge = '3y+';
                 }
 
-                if(foundAge) {
-                    addMessage(`بناءً على عمر طفلك، أرشح لك هذه الألعاب المميزة: 👇`, 'bot');
+                if (foundAge) {
+                    addMessage(`ممتاز! 😍 لهذه المرحلة العمرية، أنصحك بهذه الألعاب الرائعة:`, 'bot');
                     const recs = products.filter(p => p.age === foundAge).slice(0, 3);
                     recs.forEach(p => {
                         const recDiv = document.createElement('div');
-                        recDiv.className = 'product-recommendation';
+                        recDiv.style.background = 'white';
+                        recDiv.style.border = '1px solid #eee';
+                        recDiv.style.borderRadius = '10px';
+                        recDiv.style.padding = '10px';
+                        recDiv.style.marginTop = '10px';
+                        recDiv.style.cursor = 'pointer';
                         recDiv.innerHTML = `
-                            <div style="font-weight:bold;">${p.name}</div>
-                            <div style="font-size:0.9em;color:#666;">${p.price} جنيه</div>
+                            <div style="display:flex; gap:10px; align-items:center;">
+                                <img src="${p.img}" style="width:40px; height:40px; border-radius:5px; object-fit:contain;">
+                                <div>
+                                    <div style="font-weight:bold; font-size:0.9em;">${p.name}</div>
+                                    <div style="font-size:0.8em;color:#ff6b6b;">${p.price} جنيه</div>
+                                </div>
+                            </div>
                         `;
                         recDiv.onclick = () => {
                             openProductModal(p);
                         }
                         document.getElementById('chat-messages').appendChild(recDiv);
                     });
-                     // Auto scroll
-                    const container = document.getElementById('chat-messages');
-                    container.scrollTop = container.scrollHeight;
                 } else {
-                    addMessage("أهلاً بك! يرجى تحديد عمر الطفل (مثلاً: 6 شهور، 3 سنوات) لأتمكن من مساعدتك.", 'bot');
+                    addMessage("أهلاً بك! يرجى تحديد عمر الطفل (مثلاً: 6 شهور، 3 سنوات) لأتمكن من ترشيح الألعاب المناسبة. 😊", 'bot');
                 }
-            }, 500);
+                const container = document.getElementById('chat-messages');
+                container.scrollTop = container.scrollHeight;
+            }, 600);
         }
 
         function addMessage(text, sender) {
             const div = document.createElement('div');
             div.className = `message ${sender}`;
-            div.innerText = text;
+            div.innerHTML = text; // Allow html for line breaks
             const container = document.getElementById('chat-messages');
             container.appendChild(div);
             container.scrollTop = container.scrollHeight;
