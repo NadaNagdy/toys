@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -26,16 +26,16 @@
 
         h1 {
             text-align: center;
-            color: white;
+            color: #333;
             font-size: 3em;
             margin-bottom: 40px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
             animation: fadeInDown 1s ease-in-out;
         }
 
         .toys-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             padding: 20px;
         }
@@ -44,38 +44,55 @@
             background: white;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             animation: fadeInUp 0.8s ease-in-out;
+            display: flex;
+            flex-direction: column;
         }
 
         .toy-card:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .toy-image {
             width: 100%;
-            height: auto;
+            height: 250px;
+            object-fit: cover;
             display: block;
-            animation: pulse 2s infinite;
         }
 
         .toy-info {
             padding: 20px;
             text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .toy-title {
-            font-size: 1.5em;
-            color: #667eea;
+            font-size: 1.3em;
+            color: #4a5568;
             margin-bottom: 10px;
             font-weight: bold;
         }
 
         .toy-description {
-            color: #666;
+            color: #718096;
             line-height: 1.6;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            text-align: right;
+            direction: rtl;
+        }
+        
+        .toy-price {
+            font-size: 1.2em;
+            color: #e53e3e;
+            font-weight: bold;
+            margin-top: 10px;
         }
 
         @keyframes fadeInDown {
@@ -99,18 +116,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.02);
             }
         }
 
@@ -144,29 +149,565 @@
 
 <body>
     <div class="container">
-        <h1 class="floating">🎨 ألعاب الأطفال المتحركة 🎨</h1>
+        <h1 class="floating">🎨 ألعاب الأطفال الممتعة 🎨</h1>
 
         <div class="toys-grid">
+            <!-- Product 1: سجادة المهام الصعبه -->
             <div class="toy-card">
-                <img src="baby_play_gym.png" alt="لعبة الطفل الرضيع" class="toy-image">
+                <img src="https://drive.google.com/uc?export=view&id=1cO3dHJDazv3E00NSOki5GpcEdSE79ABO" alt="سجادة المهام الصعبه" class="toy-image">
                 <div class="toy-info">
-                    <h2 class="toy-title">صالة ألعاب الطفل الرضيع</h2>
+                    <h2 class="toy-title">سجادة أطفال فوم دابل فيس مقاس كبير</h2>
                     <p class="toy-description">
-                        صالة ألعاب تفاعلية مع ألعاب معلقة ملونة، مثالية لتطوير المهارات الحركية والحسية للطفل
+                        سجادة المهام الصعبه مهمه جدا في كل بيت فيه اطفال متعدده الاستخدامات ( للزحف . للعب . للاكل . وكمان هتحميلنا السجاد بتاعنا ككوفر للسجاد . للرحلات ولحمايه اطفالنا من الصدمات )<br>
+                        سجادة اطفال فوم دابل فيس مستورده خامه وتربروف مقاس كبير 180*200 سم تقريبا<br>
+                        عازله للمياه وسهلة التنظيف
                     </p>
+                    <div class="toy-price">720 جنيه</div>
                 </div>
             </div>
 
+            <!-- Product 2: الكتاب الالكترونى الناطق -->
             <div class="toy-card">
-                <img src="musical_crab.png" alt="لعبة السلطعون الموسيقي" class="toy-image">
+                <img src="https://drive.google.com/uc?export=view&id=11ACNvp0CsOAJ46cZATzxclIYaehaWz0t" alt="الكتاب الالكترونى الناطق" class="toy-image">
                 <div class="toy-info">
-                    <h2 class="toy-title">السلطعون الموسيقي التفاعلي</h2>
+                    <h2 class="toy-title">الكتاب الالكتروني الناطق Study book</h2>
                     <p class="toy-description">
-                        لعبة سلطعون موسيقية تفاعلية بألوان زاهية، تساعد على تنمية الحواس والمهارات الموسيقية
+                        افضل كتاب صوتي لتعليم الطفل اكبر عدد من الموضوعات المختلفه، محفز بصري بالالوان والصوت وبيدرب طفلك علي الاستماع والتفاعل عن طريق اللمس.<br>
+                        يحتوى على موضوعات كتييرة جدا (حروف، حيوانات، مواصلات، اشكال، ارقام)
                     </p>
+                    <div class="toy-price">350 جنيه</div>
                 </div>
             </div>
-        </div>
+
+            <!-- Product 3: موبايل ببرونة + عضاضة -->
+            <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1qYQjzSNKBTV2PLPpMouUn5auh2eyjyRT" alt="موبايل ببرونة" class="toy-image"> <!-- Placeholder for image, using first logical link or keeping old if unavailable, user provided photo filename which needs upload implies local but used a drive link from context if possible or placeholder -->
+                <div class="toy-info">
+                    <h2 class="toy-title">موبايل ببرونة + عضاضة</h2>
+                    <p class="toy-description">
+                        موبايل ببرونة 🍼 + عضاضة 👄 👶<br>
+                        اوبشنات كتير جدا جدا ب ١٥ زر وكذا نظام للتشغيل. شكل جذاب وتفاعلي مع اضاءة واصوات حيوانات وارقام.
+                    </p>
+                    <div class="toy-price">185 جنيه</div>
+                </div>
+            </div>
+
+            <!-- Product 4: مصباح إسقاط سحري (أباجورة) -->
+            <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1Vm2TX9lRTEgX1mT-qVCjS_5aDacAbEQi" alt="مصباح إسقاط سحري" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">مصباح إسقاط سحري (أباجورة)</h2>
+                    <p class="toy-description">
+                        حوّل أوضة طفلك لعالم خيالي في ثواني! مصباح إسقاط سحري يعرض رسومات متحركة على الحائط والسقف (بحر – كواكب – نجوم). إضاءة هادية ومريحة للعين.
+                    </p>
+                    <div class="toy-price">435 جنيه</div>
+                </div>
+            </div>
+
+            <!-- Product 5: لوحة التلوين السحرية -->
+            <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1kVUvV6JqYnw6B12msJ-rdLRIDa8ikIfF" alt="لوحة التلوين السحرية" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">لوحة التلوين السحرية Fantastic Color</h2>
+                    <p class="toy-description">
+                        لوحة تلوين مبتكرة بتتحول من رسمة أبيض وأسود لعالم ألوان مبهج بمجرد التلوين. بتنمي الإبداع والخيال (مقاس 80×80).
+                    </p>
+                    <div class="toy-price">160 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 6: طقم رسم فني Spiral Art -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1K57g_ptHtFVT0GHTlR1669lMPJirr9ES" alt="طقم رسم فني" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">طقم رسم فني Spiral Art</h2>
+                    <p class="toy-description">
+                        لعبة تعليمية وإبداعية للأطفال تساعدهم على ابتكار رسومات فنية جميلة باستخدام القوالب الحلزونية والتروس.
+                    </p>
+                    <div class="toy-price">200 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 7: عروسة بيبي بتغنّي رمضان -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1ZtzvVivQh_9JKRC74-_Va6fbe32seOw1" alt="عروسة بيبي رمضان" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">عروسة بيبي بتغنّي رمضان</h2>
+                    <p class="toy-description">
+                        رمضان بقى أحلى مع أحلى بيبي 👶💖 بتغني اغاني رمضان.
+                    </p>
+                    <div class="toy-price">750 جنيه</div>
+                </div>
+            </div>
+
+            <!-- Product 8: بيانو البطه -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1k9hmlUgEIvzUOsiSzLRLoiSvL74ygj_9" alt="بيانو البطه" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">بيانو البطه</h2>
+                    <p class="toy-description">
+                        أحلى بيانو على شكل بطه. تغيير مود الموسيقى، أنوار، نغمات مختلفة وأصوات حيوانات.
+                    </p>
+                    <div class="toy-price">340 جنيه</div>
+                </div>
+            </div>
+
+            <!-- Product 9: مغناطيس ثلاجة أذكار -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1hNI7Jq2h_AZAD-H6ynRQYdoTSQELgNCp" alt="مغناطيس ثلاجة أذكار" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">مغناطيس ثلاجة أذكار الصباح والمساء</h2>
+                    <p class="toy-description">
+                        خيرُ ما تبدأ او تنهي به يومك هو الاذكار. قطع ممغنطة تتلزق بسهولة وحجم ممتاز بخط واضح.
+                    </p>
+                    <div class="toy-price">30 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 10: عروسة رمضان -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1CNo8z4wyUvxaxi3qVdwbKq_8jGP3JyRK" alt="عروسة رمضان" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">عروسة رمضان اللي مكسره الدنيا</h2>
+                    <p class="toy-description">
+                        بتغني أغنية رمضان بصوت لطيف. مفصلات إيد ورجل متحركة، شعر ناعم، خامة قوية.
+                    </p>
+                    <div class="toy-price">275 جنيه</div>
+                </div>
+            </div>
+
+            <!-- Product 11: فانوس رمضان المعلّق -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1csqLQ7EpGtgzcC2rClxf5RSkuD1DOlqy" alt="فانوس رمضان المعلّق" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">فانوس رمضان المعلّق</h2>
+                    <p class="toy-description">
+                        فانوس بتصميم عصري يجمع بين هلال رمضان والنجوم. خفيف، عملي وسهل التعليق.
+                    </p>
+                    <div class="toy-price">75 جنيه</div>
+                </div>
+            </div>
+
+            <!-- Product 12: بلورة رمضان -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1zLObch_KN_jVdTLFCaFpiaWKDjfzXEil" alt="بلورة رمضان" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">بلورة رمضان</h2>
+                    <p class="toy-description">
+                        بلورة رمضانية بشخصيات رمضان المحبوبة. أنوار ملونة، ماتور للثلج، وأغاني رمضان.
+                    </p>
+                    <div class="toy-price">225 جنيه</div>
+                </div>
+            </div>
+             
+             <!-- Product 13: فانوس سبت بيضاوى -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1Qk2AruaQsj-cSKppExZmqCb36ocDv50m" alt="فانوس سبت بيضاوى" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">فانوس سبت بيضاوى (ديزني)</h2>
+                    <p class="toy-description">
+                        فانوس باشكال ديزني صوت ونور بخامة وجودة عالية.
+                    </p>
+                    <div class="toy-price">275 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 14: لعبة تقطيع الفواكه والخضروات -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=11HL73rVIn2wnab9loZINDtoTufkU9fb8" alt="لعبة تقطيع الفواكه" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">لعبة تقطيع الفواكه والخضروات</h2>
+                    <p class="toy-description">
+                        لعبة تعليمية ممتعة، تضم مجموعة فواكه وخضروات قابلة للتقطيع مع سكينة آمنة ولوح تقطيع.
+                    </p>
+                    <div class="toy-price">160 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 15: باترون مع كروت ملونه -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1gga8Af_b1O3rzhy3MfYjeELc5zXrC_KR" alt="باترون مع كروت" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">باترون مع كروت ملونه</h2>
+                    <p class="toy-description">
+                        لعبة باترون مكونة من 180 قطعة لتنمية المهارات.
+                    </p>
+                    <div class="toy-price">225 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 16: لعبة كلب صغير محمول -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1qTIT-cnugNNfGWEepkjjG7EFAP_GylVq" alt="لعبة كلب صغير" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">كلب صغير محمول في حقيبة</h2>
+                    <p class="toy-description">
+                        لعبة أطفال على شكل كلب صغير في حقيبة مع أدوات للعناية به (مشط، سشوار، عظمة).
+                    </p>
+                    <div class="toy-price">375 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 17: لعبة الذاكرة وتطابق الألوان -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1Vflq9eEr8GcP4vMb9CMz51UcnQe_ZVyb" alt="لعبة الذاكرة" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">لعبة الذاكرة وتطابق الألوان 2 in 1</h2>
+                    <p class="toy-description">
+                        لعبة منتسوري لتنمية المهارات: ذاكرة (كروت ورسومات) وتطابق ألوان (كرات وأطباق).
+                    </p>
+                    <div class="toy-price">410 جنيه</div>
+                </div>
+            </div>
+            
+             <!-- Product 18: لعبة MATCHING DINOS -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1DDsUykKMqv2lX1rOKWjfuNctVYMPoYD9" alt="Matching Dinos" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">لعبة Matching Dinos</h2>
+                    <p class="toy-description">
+                        لعبة تعليمية لمطابقة الديناصورات والحروف (Uppercase & Lowercase).
+                    </p>
+                    <div class="toy-price">340 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 19: علبة الوان واسكتش -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=17-TPe0XzqFv6gikT73M7bahldNzQldyB" alt="علبة الوان واسكتش" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">علبة ألوان شاملة واسكتش</h2>
+                    <p class="toy-description">
+                        علبة فيها كل أنواع الألوان (شمع، مياه، خشب، فلوماستر) واسكتش تلوين.
+                    </p>
+                    <div class="toy-price">180 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 20: تنجرام -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1-ZC5TIflEq8P6aMRe9u0wByJt-_3uPDP" alt="تنجرام" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">لعبة تنجرام (Tangram)</h2>
+                    <p class="toy-description">
+                        لغز مغناطيسي مكون من 7 قطع خشبية لتشكيل أشكال هندسية وحيوانات.
+                    </p>
+                    <div class="toy-price">85 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 21: صندوق العمليات الحسابية -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1hLKDLfpQPZz49ygmdmMaGhdmlkLZAJSQ" alt="صندوق العمليات الحسابية" class="toy-image">
+                 <div class="toy-info">
+                    <h2 class="toy-title">صندوق العمليات الحسابية</h2>
+                    <p class="toy-description">
+                        أعواد وأرقام خشبية لتعليم الجمع والطرح والضرب والقسمة بطريقة ممتعة ومحسوسة.
+                    </p>
+                    <div class="toy-price">95 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 22: دريكسيون اصوات -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=18HEU_hbdhXRxoFNfiqp_pa9IVu-hnirg" alt="دريكسيون اصوات" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">دريكسيون أصوات وإضاءة</h2>
+                    <p class="toy-description">
+                        محاكاة حقيقية للقيادة مع إضاءة وأصوات لتجربة ممتعة وآمنة.
+                    </p>
+                    <div class="toy-price">165 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 23: رمل سحرى -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1kZjc3AVRr7ZVfdhswUjLq8zEpoXRpffU" alt="رمل سحرى" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">رمل سحري (Modeling Sand)</h2>
+                    <p class="toy-description">
+                        رمل سحري آمن وسهل التشكيل مع اسطمبات لبناء الأشكال (450 جرام).
+                    </p>
+                    <div class="toy-price">170 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 24: مكعب تطابق وشاكوش -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1OVpYME7AyKfI1vS_7v1feLR2ALijEJsQ" alt="مكعب تطابق وشاكوش" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">مكعب تطابق وشاكوش (Sort & Beat)</h2>
+                    <p class="toy-description">
+                        لعبتين في لعبة واحدة: مكعب لتطابق الأشكال وشاكوش لطرق الكرات.
+                    </p>
+                    <div class="toy-price">240 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 25: اقلام التلوين الجديده -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1Fj_QHnfs4mjqfjSFafWopTcBbzl61OJp" alt="اقلام التلوين الجديده" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">أقلام التلوين الجديدة (Outline Pen)</h2>
+                    <p class="toy-description">
+                        أقلام تلوين سحرية بتكتب باللون الفضي ومظللة بإطارات ملونة (12 لون أو 24 لون).
+                    </p>
+                    <div class="toy-price">200 - 395 جنيه</div>
+                </div>
+            </div>
+            
+             <!-- Product 26: مكعب تطابق الاشكال الهندسية -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1rwvlDF3me9tpTp30iBP2YAzbreVa8JZU" alt="مكعب تطابق الاشكال" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">مكعب تطابق الأشكال الهندسية</h2>
+                    <p class="toy-description">
+                        مكعب بلاستيك عالي الجودة لتعليم تطابق الأشكال وتنمية المهارات الحركية.
+                    </p>
+                    <div class="toy-price">245 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 27: مطبخ 42 قطعة -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1qA8LN0dfxOiZP729aicac73S93_JzfLB" alt="مطبخ 42 قطعة" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">مطبخ كبير 42 قطعة</h2>
+                    <p class="toy-description">
+                        مطبخ متكامل بصوت ونور وحنفية، مع كيس أكل بيتغير لونه، فرن، وأدوات طبخ.
+                    </p>
+                    <div class="toy-price">860 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 28: مشاية أطفال دائرية -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1CZbX5NdnferepuWfE5ukdcDbw_CjFrR2" alt="مشاية أطفال" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">مشاية أطفال دائرية (لكل سن)</h2>
+                    <p class="toy-description">
+                        مشاية بـ 6 عجلات وموسيقى وألعاب، كرسي مبطن مريح، قابلة للطي.
+                    </p>
+                    <div class="toy-price">1010 - 1090 جنيه</div>
+                </div>
+            </div>
+            
+             <!-- Product 29: تسريحة فروزن -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1HL8qipp0DsdtIB4KIifiw8kRd_Er0w25" alt="تسريحة فروزن" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">تسريحة وشنطة فروزن (Frozen Suitcase)</h2>
+                    <p class="toy-description">
+                        شنطة 2 في 1 بتتحول لتسريحة، فيها مراية، اكسسوارات، ومكياج (31 قطعة).
+                    </p>
+                    <div class="toy-price">440 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 30: لعبة السلم والثعبان -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=13Fop974XNZEuzn1JkwKtSu8P8eGgNXvV" alt="لعبة السلم والثعبان" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">لعبة السلم والثعبان العملاقة (2 in 1)</h2>
+                    <p class="toy-description">
+                        لعبتين كلاسيكيتين في صندوق واحد، ممتعة لكل العائلة.
+                    </p>
+                    <div class="toy-price">200 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 31: ميزان توازن الأرقام -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1lV9zPK9__NhYDWHnWxrmZRh6RY16qCZu" alt="ميزان توازن الأرقام" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">ميزان توازن الأرقام (البطريق)</h2>
+                    <p class="toy-description">
+                        لعبة تعليمية لتعليم العد والعمليات الحسابية والموازين باستخدام أشكال البطريق.
+                    </p>
+                    <div class="toy-price">غير محدد</div>
+                </div>
+            </div>
+
+             <!-- Product 32: شخشيخة فيل -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1cF0rVFDx1-P5VsDwY7ujBmpgAAwtsom5" alt="شخشيخة فيل" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">شخشيخة فيل + عضاضة</h2>
+                    <p class="toy-description">
+                        شخشيخة على شكل فيل بتعمل موسيقى ونور، وأذن الفيل سيليكون كعضاضة.
+                    </p>
+                    <div class="toy-price">140 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 33: كلب قطيفة -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1zZIBALhssxJJ8hBlCrdQk-nXqcw5BSAF" alt="كلب قطيفة" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">كلب قطيفة</h2>
+                    <p class="toy-description">
+                        كلب قطيفة ناعم وممتع.
+                    </p>
+                    <div class="toy-price">470 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 34: ترابيزة مكعبات للأطفال -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1T6FaFWdIdXkJU7mJrkufodsGlC1m0NVB" alt="ترابيزة مكعبات" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">ترابيزة مكعبات للأطفال (Block Table)</h2>
+                    <p class="toy-description">
+                        ترابيزة متعددة الوظائف مع لوح مكعبات وكرسي، تشجع الإبداع واللعب المنظم.
+                    </p>
+                    <div class="toy-price">640 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 35: بازوكا بابلز -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=114VOnxdLY7g50iWTearIZj6mRsurISpP" alt="بازوكا بابلز" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">مسدس بازوكا بابلز (Bazooka)</h2>
+                    <p class="toy-description">
+                        مسدس بابلز قوي بـ 32 فتحة، يعمل بالبطاريات، لخلق جو من المرح في المناسبات.
+                    </p>
+                    <div class="toy-price">160 جنيه</div>
+                </div>
+            </div>
+             
+              <!-- Product 36: مسدس بابلز صغير -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1kpf3i8XZxGN6tjHqvHrW2fKPeQJjZSNX" alt="مسدس بابلز" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">مسدس بابلز أنيق (بدون فوضى)</h2>
+                    <p class="toy-description">
+                        مسدس بابلز بتصميم أنيق وإضاءة، آمن ولا يسبب فوضى المياه.
+                    </p>
+                    <div class="toy-price">185 جنيه</div>
+                </div>
+            </div>
+            
+             <!-- Product 37: لوجيكو أشكال -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1_KYLeyp8jHS23PfD-rD6a7awqNNYsIfJ" alt="لوجيكو أشكال" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">لعبة لوجيكو أشكال + ساعة رملية</h2>
+                    <p class="toy-description">
+                        بوكس خشبي لتعليم الأشكال والألوان ومطابقة الكروت، ينمي التركيز.
+                    </p>
+                    <div class="toy-price">240 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 38: مكعب متعدد الوظائف -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=122uz1jAwLbgql5D9yzYwx3oasHFEiL0I" alt="مكعب متعدد الوظائف" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">مكعب متعدد الوظائف (6 في 1)</h2>
+                    <p class="toy-description">
+                        مكعب أنشطة شامل: بيانو، أشكال، تروس، ساعة، حروف، ومواصلات.
+                    </p>
+                    <div class="toy-price">510 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 39: عروسة باربي بحصان -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=10EAxSEM-q8OhTRjFaZFvh_oYEyxqJvsv" alt="عروسة باربي" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">عروسة باربي بحصان</h2>
+                    <p class="toy-description">
+                        عروسة باربي بمفاصل متحركة مع حصان واكسسوارات.
+                    </p>
+                    <div class="toy-price">360 جنيه</div>
+                </div>
+            </div>
+            
+             <!-- Product 40: مطبخ 37 قطعه -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1aFkxBtu3atjzAiCh9MBzdPOMsL5EpOzp" alt="مطبخ 37 قطعه" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">مطبخ 37 قطعة (صوت ونور)</h2>
+                    <p class="toy-description">
+                         مطبخ تفاعلي بيعمل صوت ونور، وحنفية بتنزل ميه، مع مجموعة كاملة من الطعام وأدوات الطبخ.
+                    </p>
+                    <div class="toy-price">290 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 41: فرشاه الاسنان الذكيه -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=19reJZJ5pB6nouB1NfQla9jshScvpH2-M" alt="فرشاه الاسنان" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">فرشاة الأسنان الذكية (U-Shape)</h2>
+                    <p class="toy-description">
+                        فرشاة سيليكون على شكل حرف U لتنظيف الأسنان بسهولة وفعالية 360 درجة.
+                    </p>
+                    <div class="toy-price">50 - 55 جنيه</div>
+                </div>
+            </div>
+
+             <!-- Product 42: شطرنج الذاكرة -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1LEfYJJzsN19yrjQw2-52tqOkRdXbLPn4" alt="شطرنج الذاكرة" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">شطرنج الذاكرة الخشبي</h2>
+                    <p class="toy-description">
+                        لعبة ذاكرة وتركيز خشبية، لتقوية الملاحظة عند الأطفال والكبار.
+                    </p>
+                    <div class="toy-price">135 جنيه</div>
+                </div>
+            </div>
+            
+             <!-- Product 43: ليجو 1000 قطعة -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1ZzaHN_iMQ319Yswt-51scSXmsPDd2H0a" alt="ليجو 1000 قطعة" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">مكعبات ليجو 1000 قطعة</h2>
+                    <p class="toy-description">
+                        مجموعة ضخمة من المكعبات لبناء البيوت والسيارات والأشكال المختلفة، مع كتالوج.
+                    </p>
+                    <div class="toy-price">499 جنيه</div>
+                </div>
+            </div>
+            
+             <!-- Product 44: فوت بول + باسكت بول -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1fAnyfPxYgxaAjsyvkxQTQ4tSvz-fdc93" alt="فوت بول وباسكت" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">لعبة 2 في 1 (فوت بول + باسكت بول)</h2>
+                    <p class="toy-description">
+                        مرمى كرة قدم وشبكة كرة سلة في لعبة واحدة، للمنزل والحديقة.
+                    </p>
+                    <div class="toy-price">305 جنيه</div>
+                </div>
+            </div>
+            
+             <!-- Product 45: شنطة الوان ماركر -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1qDZKM6xQpLH8neKG0No1wI6OY-3tXB97" alt="شنطة الوان" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">شنطة ألوان ماركر Touch (مزدوجة الرأس)</h2>
+                    <p class="toy-description">
+                        شنطة ألوان فلوماستر براند Touch، كل قلم 2 سن (رفيع وعريض) لجميع الأعمار.
+                    </p>
+                    <div class="toy-price">230 - 395 جنيه</div>
+                </div>
+            </div>
+            
+             <!-- Product 46: قطار الكلب الشقي -->
+             <div class="toy-card">
+                <img src="https://drive.google.com/uc?export=view&id=1OEt_qaboFRdL0K06Q552VgJS_epaJDI-" alt="قطار الكلب" class="toy-image">
+                <div class="toy-info">
+                    <h2 class="toy-title">قطار الكلب الشقي</h2>
+                    <p class="toy-description">
+                        لعبة تفاعلية بتمشي وبتعمل موسيقى وأنوار لما تسقفلها.
+                    </p>
+                    <div class="toy-price">500 جنيه</div>
+                </div>
+            </div>
+
     </div>
 
     <script>
