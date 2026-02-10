@@ -86,6 +86,30 @@
             border-bottom: 1px solid var(--border-color);
         }
 
+        .toys-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* Mobile: 2 per row */
+            gap: 15px;
+            padding-bottom: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .toys-grid {
+                grid-template-columns: repeat(3, 1fr);
+                /* Tablet: 3 per row */
+                gap: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .toys-grid {
+                grid-template-columns: repeat(4, 1fr);
+                /* Desktop: 4 per row */
+                gap: 25px;
+            }
+        }
+
         .logo-area {
             display: flex;
             align-items: center;
