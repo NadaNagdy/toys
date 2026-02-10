@@ -333,274 +333,138 @@
             transform: translateX(-50%);
         }
 
+        /* Dynamic Theming */
+        :root {
+            --theme-color: var(--primary-blue);
+        }
+
+        body.theme-0-6m {
+            --theme-color: #4FC3F7;
+        }
+
+        /* Light Blue */
+        body.theme-6-12m {
+            --theme-color: #AB47BC;
+        }
+
+        /* Purple */
+        body.theme-1-3y {
+            --theme-color: #66BB6A;
+        }
+
+        /* Green */
+        body.theme-3y-plus {
+            --theme-color: #EF5350;
+        }
+
+        /* Red */
+
+        /* Fun Background Pattern */
+        body {
+            background-color: var(--bg-light);
+            background-image: radial-gradient(#E1F5FE 2px, transparent 2px), radial-gradient(#E1F5FE 2px, transparent 2px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+
         .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--primary-blue);
-            margin: 10px auto 0;
-            border-radius: 2px;
+            background-color: var(--theme-color);
+            transition: background-color 0.3s;
         }
 
-        .toys-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
-            padding-bottom: 40px;
-        }
-
+        /* Creative Card Design */
         .toy-card {
             background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border: 2px solid transparent;
+            border-radius: 20px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
             position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
         }
 
         .toy-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-            border-color: var(--primary-blue);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--theme-color);
         }
 
         .toy-image-wrapper {
             position: relative;
             padding-top: 100%;
-            /* 1:1 Aspect Ratio */
-            background-color: #f4f4f4;
+            background: radial-gradient(circle at center, #fff 0%, #f9f9f9 100%);
             overflow: hidden;
+            border-bottom: 1px solid #f0f0f0;
         }
 
         .toy-image {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 85%;
+            height: 85%;
             object-fit: contain;
-            padding: 15px;
-            transition: transform 0.3s;
+            transition: transform 0.4s;
         }
 
         .toy-card:hover .toy-image {
-            transform: scale(1.05);
-        }
-
-        .age-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            font-weight: bold;
-            color: var(--text-dark);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transform: translate(-50%, -50%) scale(1.1) rotate(2deg);
         }
 
         .toy-info {
             padding: 15px;
-            flex-grow: 1;
+            text-align: center;
             display: flex;
             flex-direction: column;
+            gap: 8px;
         }
 
         .toy-title {
             font-size: 1.1em;
             font-weight: 700;
             color: var(--text-dark);
-            margin-bottom: 8px;
-            line-height: 1.4;
-            flex-grow: 1;
+            margin: 0;
+            line-height: 1.3;
         }
 
         .toy-price {
-            font-size: 1.25em;
-            color: var(--primary-red);
+            font-size: 1.4em;
+            color: var(--theme-color);
             font-weight: 800;
-            margin-bottom: 15px;
+            margin: 5px 0;
+            transition: color 0.3s;
         }
 
         .add-btn {
-            background-color: var(--primary-green);
+            background-color: var(--theme-color);
             color: white;
             border: none;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 12px;
             font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: filter 0.2s, transform 0.2s;
             width: 100%;
-            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 1em;
         }
 
         .add-btn:hover {
-            background-color: #2E7D32;
-        }
-
-        /* Cart & Checkout Logic (Hidden by default) */
-        .view-section {
-            display: none;
-            animation: fadeIn 0.4s ease-out;
-        }
-
-        .view-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Checkout Styles */
-        .checkout-container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .checkout-header {
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--text-dark);
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .cart-item img {
-            width: 70px;
-            height: 70px;
-            object-fit: contain;
-            background: #f9f9f9;
-            border-radius: 8px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-family: inherit;
-        }
-
-        /* Modal */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            backdrop-filter: blur(4px);
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            width: 100%;
-            max-width: 900px;
-            max-height: 90vh;
-            border-radius: 20px;
-            overflow-y: auto;
-            padding: 30px;
-            position: relative;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .modal-content {
-                grid-template-columns: 1fr;
-            }
-
-            .header-top {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .search-bar {
-                width: 100%;
-                display: block;
-                margin: 10px 0;
-            }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            /* RTL switch */
-            font-size: 2em;
-            cursor: pointer;
-            color: var(--text-light);
-        }
-
-        .product-detail-img {
-            width: 100%;
-            border-radius: 12px;
-        }
-
-        /* Footer/Policies */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 40px 0;
-            border-top: 1px solid var(--border-color);
-            margin-top: 60px;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 20px;
+            filter: brightness(1.1);
+            transform: translateY(-2px);
         }
 
         .feature-icon {
             font-size: 2.5em;
-            color: var(--primary-blue);
+            color: var(--theme-color);
             margin-bottom: 15px;
+            transition: color 0.3s;
         }
     </style>
 </head>
@@ -609,7 +473,7 @@
 
     <!-- 1. Top Bar -->
     <div class="top-bar">
-        شحن مجاني للطلبات فوق 500 جنيه | توصيل سريع خلال 2-5 أيام
+        شحن مجاني للطلبات فوق 2000 جنيه | توصيل سريع خلال 2-5 أيام
     </div>
 
     <!-- 2. Main Header -->
@@ -854,6 +718,14 @@
             const grid = document.getElementById('products-grid');
             grid.innerHTML = '';
 
+            // Set Theme Logic
+            document.body.className = ''; // Reset
+            if (category === '0-6m') document.body.classList.add('theme-0-6m');
+            else if (category === '6-12m') document.body.classList.add('theme-6-12m');
+            else if (category === '1-3y') document.body.classList.add('theme-1-3y');
+            else if (category === '3y+') document.body.classList.add('theme-3y-plus');
+            else document.body.classList.add('theme-all'); // Default theme
+
             const filtered = category === 'all'
                 ? products
                 : products.filter(p => p.age === category || (category === '3y+' && (p.age === '3y+' || p.age === '1-3y')));
@@ -869,24 +741,31 @@
                 const card = document.createElement('div');
                 card.className = 'toy-card';
                 card.onclick = (e) => {
-                    if (!e.target.classList.contains('add-btn')) {
+                    if (!e.target.closest('.add-btn')) {
                         openProductModal(product);
                     }
                 };
+                // Refined Layout: Image -> name -> price -> button
                 card.innerHTML = `
-                <div style="width:100%; text-align:center;"><img src="${product.img}" class="toy-image" alt="${product.name}" onerror="this.src='https://via.placeholder.com/250x250?text=Open+Store'"></div>
-                    <div class="toy-info">
-                        <h3 class="toy-title">${product.name}</h3>
-                        <div class="toy-price">${product.price} ج.م</div>
-                        <button class="add-btn" onclick="addToCart(${product.id})">إضافة للسلة <i class="fas fa-cart-plus"></i></button>
-                    </div>
+                <div class="toy-image-wrapper">
+                    <img src="${product.img}" class="toy-image" alt="${product.name}" onerror="this.src='https://via.placeholder.com/250x250?text=Open+Store'">
+                    <div class="age-badge">${product.age}</div>
+                </div>
+                <div class="toy-info">
+                    <h3 class="toy-title">${product.name}</h3>
+                    <div class="toy-price">${product.price} ج.م</div>
+                    <button class="add-btn" onclick="addToCart(${product.id})">
+                        <span>إضافة للسلة</span>
+                        <i class="fas fa-cart-plus"></i>
+                    </button>
+                </div>
         `;
                 grid.appendChild(card);
             });
 
-            document.querySelectorAll('.filter-btn').forEach(btn => {
+            document.querySelectorAll('.filter-btn, .nav-item').forEach(btn => {
                 btn.classList.remove('active');
-                if (btn.onclick.toString().includes(category)) btn.classList.add('active');
+                if (btn.onclick && btn.onclick.toString().includes(category)) btn.classList.add('active');
             });
         }
 
@@ -994,13 +873,23 @@
             }
 
             const region = document.getElementById('shipping-region').value;
-            const shipping = parseInt(region);
+            let shipping = parseInt(region);
+
+            // Free Shipping Logic > 2000
+            if (subtotal >= 2000) {
+                shipping = 0;
+            }
 
             const grandTotal = subtotal - discount + shipping;
 
             document.getElementById('subtotal').innerText = subtotal + ' جنيه';
             document.getElementById('discount').innerText = '-' + discount + ' جنيه';
-            document.getElementById('shipping-cost').innerText = shipping + ' جنيه';
+
+            if (shipping === 0 && subtotal >= 2000) {
+                document.getElementById('shipping-cost').innerHTML = '<span style="color:var(--primary-green); font-weight:bold;">مجاني</span>';
+            } else {
+                document.getElementById('shipping-cost').innerText = shipping + ' جنيه';
+            }
             document.getElementById('grand-total').innerText = grandTotal + ' جنيه';
         }
 
