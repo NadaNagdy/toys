@@ -382,6 +382,22 @@
             --theme-color: #E53935;
         }
 
+        body.theme-0-6m {
+            --theme-color: #4FC3F7;
+        }
+
+        body.theme-6-12m {
+            --theme-color: #AB47BC;
+        }
+
+        body.theme-1-3y {
+            --theme-color: #66BB6A;
+        }
+
+        body.theme-3y-plus {
+            --theme-color: #EF5350;
+        }
+
         /* Fun Background Pattern */
         body {
             background-color: var(--bg-light);
@@ -895,6 +911,23 @@
         .category-circle[data-category="maths"] .circle-wrapper {
             background: linear-gradient(135deg, #E53935, #C62828);
         }
+
+        /* Age category colors */
+        .category-circle[data-category="age-0-6m"] .circle-wrapper {
+            background: linear-gradient(135deg, #4FC3F7, #03A9F4);
+        }
+
+        .category-circle[data-category="age-6-12m"] .circle-wrapper {
+            background: linear-gradient(135deg, #AB47BC, #8E24AA);
+        }
+
+        .category-circle[data-category="age-1-3y"] .circle-wrapper {
+            background: linear-gradient(135deg, #66BB6A, #43A047);
+        }
+
+        .category-circle[data-category="age-3y"] .circle-wrapper {
+            background: linear-gradient(135deg, #EF5350, #E53935);
+        }
     </style>
 </head>
 
@@ -985,6 +1018,41 @@
                         <img src="maths_category_kid_1770721639480.png" alt="الرياضيات">
                     </div>
                     <div class="category-label">الرياضيات</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Age-Based Category Grid -->
+        <section class="category-grid-section" style="margin-top: 20px;">
+            <h2 style="text-align: center; margin-bottom: 30px; color: var(--text-dark); font-size: 1.8em;">التصفح حسب
+                العمر 🎂</h2>
+            <div class="category-grid" style="grid-template-columns: repeat(4, 1fr); max-width: 900px;">
+                <div class="category-circle" onclick="filterProducts('0-6m')" data-category="age-0-6m">
+                    <div class="circle-wrapper">
+                        <img src="age_0_6m_kid_1770722164469.png" alt="0-6 شهور">
+                    </div>
+                    <div class="category-label">0-6 شهور 👶</div>
+                </div>
+
+                <div class="category-circle" onclick="filterProducts('6-12m')" data-category="age-6-12m">
+                    <div class="circle-wrapper">
+                        <img src="age_6_12m_kid_1770722181294.png" alt="6-12 شهر">
+                    </div>
+                    <div class="category-label">6-12 شهر 👼</div>
+                </div>
+
+                <div class="category-circle" onclick="filterProducts('1-3y')" data-category="age-1-3y">
+                    <div class="circle-wrapper">
+                        <img src="age_1_3y_kid_1770722214112.png" alt="1-3 سنوات">
+                    </div>
+                    <div class="category-label">1-3 سنوات 🛴</div>
+                </div>
+
+                <div class="category-circle" onclick="filterProducts('3y+')" data-category="age-3y">
+                    <div class="circle-wrapper">
+                        <img src="age_3plus_kid_1770722228525.png" alt="+3 سنوات">
+                    </div>
+                    <div class="category-label">+3 سنوات 🎨</div>
                 </div>
             </div>
         </section>
@@ -1208,16 +1276,21 @@
             const grid = document.getElementById('products-grid');
             grid.innerHTML = '';
 
-            // Set Theme Logic for STEM categories
+            // Set Theme Logic for both STEM and age categories
             document.body.className = ''; // Reset
             if (category === 'science') document.body.classList.add('theme-science');
             else if (category === 'technology') document.body.classList.add('theme-technology');
             else if (category === 'engineering') document.body.classList.add('theme-engineering');
             else if (category === 'arts') document.body.classList.add('theme-arts');
             else if (category === 'maths') document.body.classList.add('theme-maths');
+            else if (category === '0-6m') document.body.classList.add('theme-0-6m');
+            else if (category === '6-12m') document.body.classList.add('theme-6-12m');
+            else if (category === '1-3y') document.body.classList.add('theme-1-3y');
+            else if (category === '3y+') document.body.classList.add('theme-3y-plus');
             else document.body.classList.add('theme-all'); // Default theme
 
-            const finalFiltered = category === 'all' ? products : products.filter(p => p.category === category);
+            // Filter by STEM category OR age
+            const finalFiltered = category === 'all' ? products : products.filter(p => p.category === category || p.age === category);
 
             if (finalFiltered.length === 0) {
                 grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-gray);">لا توجد منتجات في هذا القسم حالياً</p>';
