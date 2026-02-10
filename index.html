@@ -362,26 +362,25 @@
             --theme-color: var(--primary-blue);
         }
 
-        body.theme-0-6m {
-            --theme-color: #4FC3F7;
-        }
-
-        /* Light Blue */
-        body.theme-6-12m {
-            --theme-color: #AB47BC;
-        }
-
-        /* Purple */
-        body.theme-1-3y {
+        body.theme-science {
             --theme-color: #66BB6A;
         }
 
-        /* Green */
-        body.theme-3y-plus {
-            --theme-color: #EF5350;
+        body.theme-technology {
+            --theme-color: #FDD835;
         }
 
-        /* Red */
+        body.theme-engineering {
+            --theme-color: #FF9800;
+        }
+
+        body.theme-arts {
+            --theme-color: #AB47BC;
+        }
+
+        body.theme-maths {
+            --theme-color: #E53935;
+        }
 
         /* Fun Background Pattern */
         body {
@@ -794,6 +793,108 @@
             outline: none;
             border-color: var(--primary-blue);
         }
+
+        /* Category Photo Grid Section */
+        .category-grid-section {
+            padding: 50px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e3e8f0 100%);
+            margin: -20px -20px 40px -20px;
+            border-radius: 0 0 40px 40px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        .category-circle {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .category-circle:hover {
+            transform: translateY(-10px);
+        }
+
+        .circle-wrapper {
+            width: 100%;
+            aspect-ratio: 1;
+            overflow: hidden;
+            /* Funky oval shape - each side different! */
+            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+        }
+
+        .category-circle:hover .circle-wrapper {
+            /* Morphs to a different funky shape on hover */
+            border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            transform: rotate(5deg);
+        }
+
+        .circle-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .category-circle:hover .circle-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .category-label {
+            margin-top: 15px;
+            font-weight: 700;
+            font-size: 1.1em;
+            color: var(--text-dark);
+            transition: color 0.3s;
+        }
+
+        .category-circle:hover .category-label {
+            color: var(--primary-blue);
+        }
+
+        /* Specific colors for each category */
+        .category-circle[data-category="science"] .circle-wrapper {
+            background: linear-gradient(135deg, #66BB6A, #43A047);
+        }
+
+        .category-circle[data-category="technology"] .circle-wrapper {
+            background: linear-gradient(135deg, #FDD835, #FBC02D);
+        }
+
+        .category-circle[data-category="engineering"] .circle-wrapper {
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+        }
+
+        .category-circle[data-category="arts"] .circle-wrapper {
+            background: linear-gradient(135deg, #AB47BC, #8E24AA);
+        }
+
+        .category-circle[data-category="maths"] .circle-wrapper {
+            background: linear-gradient(135deg, #E53935, #C62828);
+        }
     </style>
 </head>
 
@@ -837,16 +938,57 @@
             <nav class="nav-bar">
                 <ul class="nav-list">
                     <li class="nav-item active" onclick="filterProducts('all')">الكل</li>
-                    <li class="nav-item" onclick="filterProducts('0-6m')">0-6 شهور 👶</li>
-                    <li class="nav-item" onclick="filterProducts('6-12m')">6-12 شهر 👼</li>
-                    <li class="nav-item" onclick="filterProducts('1-3y')">1-3 سنوات 🛴</li>
-                    <li class="nav-item" onclick="filterProducts('3y+')">+3 سنوات 🎨</li>
+                    <li class="nav-item" onclick="filterProducts('science')">ألعاب علمية 🔬</li>
+                    <li class="nav-item" onclick="filterProducts('technology')">ألعاب تكنولوجية 🚀</li>
+                    <li class="nav-item" onclick="filterProducts('engineering')">ألعاب هندسية 🔧</li>
+                    <li class="nav-item" onclick="filterProducts('arts')">فنون وأشغال يدوية 🎨</li>
+                    <li class="nav-item" onclick="filterProducts('maths')">رياضيات 🔢</li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <div class="container">
+        <!-- Category Photo Grid -->
+        <section class="category-grid-section">
+            <div class="category-grid">
+                <div class="category-circle" onclick="filterProducts('science')" data-category="science">
+                    <div class="circle-wrapper">
+                        <img src="science_category_kid_1770721672150.png" alt="العلوم">
+                    </div>
+                    <div class="category-label">العلوم</div>
+                </div>
+
+                <div class="category-circle" onclick="filterProducts('technology')" data-category="technology">
+                    <div class="circle-wrapper">
+                        <img src="technology_category_kid_1770721687026.png" alt="التكنولوجيا">
+                    </div>
+                    <div class="category-label">التكنولوجيا</div>
+                </div>
+
+                <div class="category-circle" onclick="filterProducts('engineering')" data-category="engineering">
+                    <div class="circle-wrapper">
+                        <img src="engineering_category_kid_1770721702083.png" alt="الهندسة">
+                    </div>
+                    <div class="category-label">الهندسة</div>
+                </div>
+
+                <div class="category-circle" onclick="filterProducts('arts')" data-category="arts">
+                    <div class="circle-wrapper">
+                        <img src="arts_category_kid_1770721624435.png" alt="الفنون">
+                    </div>
+                    <div class="category-label">الفنون</div>
+                </div>
+
+                <div class="category-circle" onclick="filterProducts('maths')" data-category="maths">
+                    <div class="circle-wrapper">
+                        <img src="maths_category_kid_1770721639480.png" alt="الرياضيات">
+                    </div>
+                    <div class="category-label">الرياضيات</div>
+                </div>
+            </div>
+        </section>
+
 
         <!-- Home View -->
         <div id="home-view" class="view-section active">
@@ -1066,19 +1208,16 @@
             const grid = document.getElementById('products-grid');
             grid.innerHTML = '';
 
-            // Set Theme Logic
+            // Set Theme Logic for STEM categories
             document.body.className = ''; // Reset
-            if (category === '0-6m') document.body.classList.add('theme-0-6m');
-            else if (category === '6-12m') document.body.classList.add('theme-6-12m');
-            else if (category === '1-3y') document.body.classList.add('theme-1-3y');
-            else if (category === '3y+') document.body.classList.add('theme-3y-plus');
+            if (category === 'science') document.body.classList.add('theme-science');
+            else if (category === 'technology') document.body.classList.add('theme-technology');
+            else if (category === 'engineering') document.body.classList.add('theme-engineering');
+            else if (category === 'arts') document.body.classList.add('theme-arts');
+            else if (category === 'maths') document.body.classList.add('theme-maths');
             else document.body.classList.add('theme-all'); // Default theme
 
-            const filtered = category === 'all'
-                ? products
-                : products.filter(p => p.age === category || (category === '3y+' && (p.age === '3y+' || p.age === '1-3y')));
-
-            const finalFiltered = category === 'all' ? products : products.filter(p => p.age === category);
+            const finalFiltered = category === 'all' ? products : products.filter(p => p.category === category);
 
             if (finalFiltered.length === 0) {
                 grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-gray);">لا توجد منتجات في هذا القسم حالياً</p>';
