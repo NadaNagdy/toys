@@ -1292,7 +1292,7 @@
                 card.className = 'toy-card';
                 card.onclick = (e) => {
                     if (!e.target.closest('.add-btn')) {
-                        openProductModal(product);
+                        window.open(`product.html?id=${product.id}`, '_blank');
                     }
                 };
                 // Refined Layout: Image -> name -> price -> button
@@ -1304,7 +1304,7 @@
                 <div class="toy-info">
                     <h3 class="toy-title">${product.name}</h3>
                     <div class="toy-price">${product.price} ج.م</div>
-                    <button class="add-btn" onclick="addToCart(${product.id})">
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart(${product.id})">
                         <span>إضافة للسلة</span>
                         <i class="fas fa-cart-plus"></i>
                     </button>
@@ -1570,7 +1570,7 @@
                             </div>
                         `;
                         recDiv.onclick = () => {
-                            openProductModal(p);
+                            window.open(`product.html?id=${p.id}`, '_blank');
                         }
                         document.getElementById('chat-messages').appendChild(recDiv);
                     });
