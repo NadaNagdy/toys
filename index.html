@@ -1005,6 +1005,7 @@
                     <li class="nav-item" onclick="filterProducts('6-12m')">6-12 شهر 👼</li>
                     <li class="nav-item" onclick="filterProducts('1-3y')">1-3 سنوات 🛴</li>
                     <li class="nav-item" onclick="filterProducts('3y+')">+3 سنوات 🎨</li>
+                    <li class="nav-item" onclick="filterProducts('lanterns')">فوانيس رمضان 🏮</li>
                 </ul>
             </nav>
         </div>
@@ -1153,6 +1154,11 @@
                     <div id="discount-message"
                         style="background: #E8F5E9; padding: 12px; border-radius: 8px; margin-bottom: 15px; color: var(--primary-green); font-weight: bold; text-align: center; display: none;">
                         🎉 خصم 15% لشرائك منتجين أو أكثر!
+                    </div>
+
+                    <div id="lantern-bundle-message"
+                        style="background: #FFF3E0; padding: 12px; border-radius: 8px; margin-bottom: 15px; color: #F57C00; font-weight: bold; text-align: center; display: none;">
+                        🏮 عرض خاص! 2 فانوس = 500 جنيه
                     </div>
 
                     <div style="background: #f8fafc; padding: 20px; border-radius: 12px;">
@@ -1453,14 +1459,44 @@
 
         function updateTotal() {
             const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            // Special lantern bundle offer: 2 lanterns (IDs 64, 65, 66) = 500 EGP
+            const lanternIds = [64, 65, 66];
+            const lanternItems = cart.filter(item => lanternIds.includes(item.id));
+            const totalLanterns = lanternItems.reduce((sum, item) => sum + item.qty, 0);
+
+            let lanternDiscount = 0;
+            if (totalLanterns >= 2) {
+                const bundles = Math.floor(totalLanterns / 2);
+                const originalLanternPrice = lanternItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
+                const bundlePrice = bundles * 500;
+                const remainingLanterns = totalLanterns % 2;
+                const remainingPrice = remainingLanterns * 285;
+                const newLanternPrice = bundlePrice + remainingPrice;
+                lanternDiscount = originalLanternPrice - newLanternPrice;
+                subtotal -= lanternDiscount;
+            }
 
             let discount = 0;
-            if (totalQty >= 2) {
+            if (totalQty >= 2 && lanternDiscount === 0) {
                 discount = Math.round(subtotal * 0.15);
                 document.getElementById('discount-message').style.display = 'block';
             } else {
                 document.getElementById('discount-message').style.display = 'none';
+            }
+
+            // Show lantern bundle message if applicable
+            if (lanternDiscount > 0) {
+                const lanternMsg = document.getElementById('lantern-bundle-message');
+                if (lanternMsg) {
+                    lanternMsg.style.display = 'block';
+                    const bundles = Math.floor(totalLanterns / 2);
+                    lanternMsg.innerHTML = `🏮 عرض خاص! ${bundles} ${bundles === 1 ? 'باقة' : 'باقات'} فوانيس (2 فانوس = 500 ج.م) - وفرت ${lanternDiscount} جنيه!`;
+                }
+            } else {
+                const lanternMsg = document.getElementById('lantern-bundle-message');
+                if (lanternMsg) lanternMsg.style.display = 'none';
             }
 
             const region = document.getElementById('shipping-region').value;
