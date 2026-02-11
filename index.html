@@ -1258,7 +1258,19 @@
 
         // Initialize
         function init() {
+            // Load cart from localStorage
+            const savedCart = localStorage.getItem('cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartUI();
+            }
+
             renderProducts('all');
+
+            // Check if URL has #cart hash to show cart view
+            if (window.location.hash === '#cart') {
+                switchView('cart');
+            }
         }
 
         // Render Products
@@ -1352,6 +1364,9 @@
             } else {
                 cart.push({ ...product, qty: 1 });
             }
+
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
             updateCartUI();
 
             // Show toast notification
@@ -1431,6 +1446,8 @@
                     cart = cart.filter(i => i.id !== id);
                 }
             }
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
             updateCartUI();
         }
 

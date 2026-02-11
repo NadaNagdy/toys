@@ -392,10 +392,10 @@
             // Show toast
             showToast('تم إضافة المنتج للسلة! 🛒');
 
-            // Optional: redirect to cart after 1.5 seconds
+            // Redirect to cart immediately
             setTimeout(() => {
                 window.location.href = 'index.html#cart';
-            }, 1500);
+            }, 800);
         }
 
         function showToast(message) {
